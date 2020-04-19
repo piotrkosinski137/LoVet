@@ -9,9 +9,10 @@
 
 .pet-cards {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
 
   .pet-card {
-    flex: 0 0 24%;
+    flex: 0 0 23%;
+    margin: 10px;
   }
 }

@@ -1,0 +1,30 @@
+.container {
+  padding: 30px;
+  width: 350px;
+  height: 300px;
+  background-image: var(--background-gradient);
+  font-weight: 400;
+
+  display: flex;
+  flex-direction: column;
+
+  .row {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: flex-start;
+
+    .input {
+      flex: 0 0 100%;
+    }
+  }
+
+  .action-buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+
+    .button {
+      flex: 0 0 49%;
+    }
+  }
+}

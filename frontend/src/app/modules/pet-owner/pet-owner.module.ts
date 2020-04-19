@@ -13,18 +13,23 @@ import { VisitCalendarColumnDateComponent } from './book-visit/book-visit-calend
 import { PetsDashboardComponent } from './pets-dashboard/pets-dashboard.component';
 import { VisitsDashboardComponent } from './visits-dashboard/visits-dashboard.component';
 import { PetCardComponent } from './pets-dashboard/pet-card/pet-card.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { AddPetModalComponent } from './pets-dashboard/add-pet-modal/add-pet-modal.component';
 
 @NgModule({
   imports: [
     PetOwnerRoutingModule,
     MaterialModule,
     CommonModule,
-    MatTabsModule
+    MatTabsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   entryComponents: [
-    VisitReservationModalComponent
+    VisitReservationModalComponent,
+    AddPetModalComponent
   ],
-  declarations: [BookVisitComponent, BookVisitCalendarComponent, VisitCalendarColumnComponent, VisitReservationModalComponent, VisitCalendarColumnDateComponent, PetsDashboardComponent, VisitsDashboardComponent, PetCardComponent],
+  declarations: [BookVisitComponent, BookVisitCalendarComponent, VisitCalendarColumnComponent, VisitReservationModalComponent, VisitCalendarColumnDateComponent, PetsDashboardComponent, VisitsDashboardComponent, PetCardComponent, AddPetModalComponent],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],

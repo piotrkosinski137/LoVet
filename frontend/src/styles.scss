@@ -23,6 +23,9 @@ body {
 }
 
 /*Material overrides*/
+input.mat-input-element {
+  color: var(--color-white-grey);
+}
 
 .mat-select-value {
   color: white !important;
