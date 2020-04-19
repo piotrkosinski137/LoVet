@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {VisitBooking} from "../../../model/visit-booking";
 import {MatDialog} from "@angular/material/dialog";
 import {VisitReservationModalComponent} from "./visit-reservation-modal/visit-reservation-modal.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-visit-calendar-column',
@@ -16,7 +17,7 @@ export class VisitCalendarColumnComponent implements OnInit {
   @Input()
   visitBookings: VisitBooking[];
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog, private router: Router) {
   }
 
   ngOnInit() {
@@ -33,6 +34,7 @@ export class VisitCalendarColumnComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result.isSubmitted) {
         this.visitBookings.filter(visitBooking => visitBooking.date === result.visitBooking)[0].isBooked = true;
+        this.router.navigate(['pet-owner/visits']);
       }
     });
   }

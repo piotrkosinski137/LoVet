@@ -4,7 +4,7 @@
       <strong>LOGO</strong>
     </div>
     <a routerLink="/doctor/working-hours" class="link-item">Select working</a>
-    <a routerLink="/pet-owner/visit" class="link-item">Book visit</a>
+    <a routerLink="/pet-owner/book-visit" class="link-item">Book visit</a>
   </div>
   <div class="navbar-right">
     <div [matMenuTriggerFor]="menu">
@@ -12,6 +12,7 @@
     </div>
     <mat-menu #menu="matMenu">
       <div class="hamburger-dropdown">
+        <a routerLink="/pet-owner/visits" class="link-item">Your Visits</a>
         <a routerLink="/login" class="link-item">Login</a>
         <a routerLink="/logout" class="link-item" (click)="logout()">Logout</a>
       </div>

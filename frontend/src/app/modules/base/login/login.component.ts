@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     .subscribe(
       authResponse => {
         localStorage.setItem('token', authResponse.token);
-        this.router.navigate(['/pet-owner/visit']);
+        this.router.navigate(['/pet-owner/book-visit']);
         this.loadingService.loadingSubject.next(false);
       },
       error => {

@@ -1,0 +1,35 @@
+.container {
+  .table-title {
+    color: var(--color-white-grey);
+    font-weight: 400;
+  }
+
+  .visit-header-container {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid var(--color-pink);
+
+    .column-title {
+      color: var(--color-pink);
+      font-size: 20px;
+      flex: 0 0 25%;
+      text-align: center;
+    }
+  }
+
+  .visit-body-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-pink);
+
+    .column-row {
+      display: flex;
+
+      .column-content {
+        color: var(--color-white-grey);
+        flex: 0 0 25%;
+        text-align: center;
+      }
+    }
+  }
+}
