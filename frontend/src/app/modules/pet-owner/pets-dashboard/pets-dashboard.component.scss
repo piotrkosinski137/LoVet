@@ -1,0 +1,17 @@
+.add-button {
+  display: flex;
+  align-items: center;
+
+  .button-add-text {
+    margin: 3px 5px;
+  }
+}
+
+.pet-cards {
+  display: flex;
+  justify-content: space-between;
+
+  .pet-card {
+    flex: 0 0 24%;
+  }
+}

@@ -1,0 +1,25 @@
+.pet-card {
+  background-color: var(--color-secondary);
+  border: 3px solid var(--color-primary);
+
+  .pet-header {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    color: var(--color-pink);
+
+    .pet-name {
+      margin-right: auto;
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
+  .card-image {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.dropdown-option {
+  color: var(--color-white-grey);
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Pet} from "../model/pet";
 
 @Component({
   selector: 'app-pets-dashboard',
@@ -6,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pets-dashboard.component.scss']
 })
 export class PetsDashboardComponent implements OnInit {
+
+  pets: Pet[] = [
+    {name: 'Kluszek'},
+    {name: 'Karotek'},
+    {name: 'Kefir'},
+    {name: 'Buraczek'}
+  ]
 
   constructor() { }
 

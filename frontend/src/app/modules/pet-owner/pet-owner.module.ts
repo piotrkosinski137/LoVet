@@ -12,6 +12,7 @@ import { VisitReservationModalComponent } from './book-visit/book-visit-calendar
 import { VisitCalendarColumnDateComponent } from './book-visit/book-visit-calendar/visit-calendar-column/visit-calendar-column-date/visit-calendar-column-date.component';
 import { PetsDashboardComponent } from './pets-dashboard/pets-dashboard.component';
 import { VisitsDashboardComponent } from './visits-dashboard/visits-dashboard.component';
+import { PetCardComponent } from './pets-dashboard/pet-card/pet-card.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { VisitsDashboardComponent } from './visits-dashboard/visits-dashboard.co
   entryComponents: [
     VisitReservationModalComponent
   ],
-  declarations: [BookVisitComponent, BookVisitCalendarComponent, VisitCalendarColumnComponent, VisitReservationModalComponent, VisitCalendarColumnDateComponent, PetsDashboardComponent, VisitsDashboardComponent],
+  declarations: [BookVisitComponent, BookVisitCalendarComponent, VisitCalendarColumnComponent, VisitReservationModalComponent, VisitCalendarColumnDateComponent, PetsDashboardComponent, VisitsDashboardComponent, PetCardComponent],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],

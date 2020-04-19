@@ -1,0 +1,28 @@
+<mat-card class="pet-card">
+  <div class="card-padding">
+    <div class="pet-header">
+      <div class="pet-name">
+        <p>{{pet.name}}</p>
+      </div>
+      <div>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item class="dropdown-option">
+            <span>Visit history</span>
+          </button>
+          <button mat-menu-item class="dropdown-option">
+            <span >Edit</span>
+          </button>
+          <button mat-menu-item class="dropdown-option">
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+    <img class="card-image" src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+  </div>
+</mat-card>
+
+

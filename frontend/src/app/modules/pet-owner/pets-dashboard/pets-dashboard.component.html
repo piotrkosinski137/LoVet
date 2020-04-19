@@ -1,1 +1,18 @@
-<p>pets-dashboard works!</p>
+<button mat-button mat-raised-button color="success">
+  <div class="add-button">
+    <span class="material-icons">add_circle_outline</span>
+    <p class="button-add-text">Add</p>
+  </div>
+</button>
+<br>
+<br>
+
+<div class="pet-cards">
+  <ng-container *ngFor="let pet of pets">
+    <div class="pet-card">
+      <app-pet-card [pet]="pet"></app-pet-card>
+    </div>
+  </ng-container>
+</div>
+
+
