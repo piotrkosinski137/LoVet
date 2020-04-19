@@ -1,0 +1,33 @@
+<div class="container">
+  <mat-card class="card">
+    <mat-card-header class="card-header">
+      <mat-card-title>Login form</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+        <div class="login-dashboard">
+          <mat-form-field>
+            <input type="text" [style.fontSize.px]=20 matInput placeholder="Your email"
+                   formControlName="username" class="login-input">
+            <mat-error *ngIf="loginForm.controls['username'].errors?.required">Username is required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input type="password" [style.fontSize.px]=20 matInput placeholder="Your password"
+                   formControlName="password" class="login-input">
+            <mat-error *ngIf="loginForm.controls['password'].errors?.required">Password is required
+            </mat-error>
+          </mat-form-field>
+          <button *ngIf="!(loadingService.loading$ | async)" [disabled]="loginForm.invalid"
+                  type="submit"
+                  mat-raised-button color="success">Submit
+          </button>
+          <div class="spinner-container">
+            <mat-spinner *ngIf="loadingService.loading$ | async" [diameter]="40"></mat-spinner>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+

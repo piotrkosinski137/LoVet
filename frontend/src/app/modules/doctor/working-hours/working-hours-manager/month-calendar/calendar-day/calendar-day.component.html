@@ -1,0 +1,4 @@
+<div class="day-box" (click)="onDayClicked()" [ngClass]="workingDayType !== WorkingDayType.NONE ? 'workday-scheduled': ''">
+  {{date.getDate()}}
+  <h4 class="shift-description" *ngIf="workingDayType !== WorkingDayType.NONE">{{workingDayType.toString()}}</h4>
+</div>

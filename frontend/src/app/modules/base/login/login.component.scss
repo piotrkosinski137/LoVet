@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+
+  .card {
+    .card-header {
+      display: flex;
+      justify-content: center;
+      color: var(--color-white-grey);
+      margin-bottom: 10px;
+    }
+
+    background-color: rgba(0, 0, 0, 0.1);
+
+    .login-dashboard {
+      width: 400px;
+      display: flex;
+      flex-direction: column;
+
+      .login-input {
+        color: var(--color-white-grey);
+      }
+
+      .spinner-container {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+

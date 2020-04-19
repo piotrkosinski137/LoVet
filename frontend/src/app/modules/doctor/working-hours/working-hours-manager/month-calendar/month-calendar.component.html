@@ -1,0 +1,26 @@
+<div>
+  <div class="month-header">
+    <h1 class="month-name">{{monthDate | getDatePart: 'MONTH'}}</h1>
+  </div>
+  <div class="day-names-container" *ngIf="monthDays.length !== 0">
+    <div class="day"><strong>MON</strong></div>
+    <div class="day"><strong>TUE</strong></div>
+    <div class="day"><strong>WED</strong></div>
+    <div class="day"><strong>THUR</strong></div>
+    <div class="day"><strong>FRI</strong></div>
+    <div class="day"><strong>SAT</strong></div>
+    <div class="day"><strong>SUN</strong></div>
+  </div>
+  <div class="days-container">
+    <ng-container *ngFor="let number of gapNumbers">
+      <div class="day-container">
+        <app-calendar-day style="visibility:hidden" [date]="dummyDate()"></app-calendar-day>
+      </div>
+    </ng-container>
+    <ng-container *ngFor="let date of monthDays">
+      <div class="day-container">
+        <app-calendar-day [date]="date"></app-calendar-day>
+      </div>
+    </ng-container>
+  </div>
+</div>

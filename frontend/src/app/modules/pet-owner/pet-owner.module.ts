@@ -1,0 +1,31 @@
+import {NgModule} from "@angular/core";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {AuthInterceptor} from "../../auth/auth-interceptor.service";
+import {MaterialModule} from "../../material.module";
+import {CommonModule} from "@angular/common";
+import {PetOwnerRoutingModule} from "./pet-owner-routing.module";
+import {BookVisitComponent} from './book-visit/book-visit.component';
+import {MatTabsModule} from "@angular/material/tabs";
+import { BookVisitCalendarComponent } from './book-visit/book-visit-calendar/book-visit-calendar.component';
+import { VisitCalendarColumnComponent } from './book-visit/book-visit-calendar/visit-calendar-column/visit-calendar-column.component';
+import { VisitReservationModalComponent } from './book-visit/book-visit-calendar/visit-calendar-column/visit-reservation-modal/visit-reservation-modal.component';
+import { VisitCalendarColumnDateComponent } from './book-visit/book-visit-calendar/visit-calendar-column/visit-calendar-column-date/visit-calendar-column-date.component';
+
+@NgModule({
+  imports: [
+    PetOwnerRoutingModule,
+    MaterialModule,
+    CommonModule,
+    MatTabsModule
+  ],
+  entryComponents: [
+    VisitReservationModalComponent
+  ],
+  declarations: [BookVisitComponent, BookVisitCalendarComponent, VisitCalendarColumnComponent, VisitReservationModalComponent, VisitCalendarColumnDateComponent],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
+  exports: []
+})
+export class PetOwnerModule {
+}

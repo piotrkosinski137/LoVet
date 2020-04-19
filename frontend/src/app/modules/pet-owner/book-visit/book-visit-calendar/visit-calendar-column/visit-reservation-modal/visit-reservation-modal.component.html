@@ -1,0 +1,37 @@
+<div class="container">
+
+  <div class="row">
+    <div class="title">Doctor:</div>
+    <div class="description">{{visitBooking.doctorName}}</div>
+  </div>
+  <div class="row">
+    <div class="title">Date:</div>
+    <div class="description">{{visitBooking.date | date}}</div>
+  </div>
+  <div class="row">
+    <div class="title">Hour:</div>
+    <div class="description">{{visitHour}}</div>
+  </div>
+  <div class="row">
+    <div class="title">Pet Name</div>
+    <mat-form-field class="input-element">
+      <mat-select>
+        <mat-option value="Kluszek">
+          Kluszek
+        </mat-option>
+        <mat-option value="Karotka">
+          Karotka
+        </mat-option>
+        <mat-option value="Kaja">
+          Kaja
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+    <div>
+      <button class="button" mat-button mat-raised-button [mat-dialog-close]="onBookingSubmitted()" color="success">
+        Submit
+      </button>
+      <button class="button" mat-button mat-raised-button [mat-dialog-close]="onBookingCancelled()">Cancel</button>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+.day-box {
+  padding: 10px 0 50px 10px;
+  margin: 5px;
+  border: 1px solid var(--color-pink);
+  height: 50px;
+  border-radius: 10px;
+  transition: all .3s;
+  font-weight: 700;
+  color: var(--color-white-grey);
+  font-size: 30px;
+
+  .shift-description {
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  &:hover {
+    background-color: var(--color-grey);
+    transform: scale(1.1);
+    box-shadow: 0 1.5rem 4rem rgba(#0f9d58, .4);
+    cursor: pointer;
+  }
+}
+
+.workday-scheduled {
+  background-color: var(--color-green);
+}

@@ -1,0 +1,81 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background-image: var(--background-gradient);
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+:root {
+  --color-primary: #332b3c;
+  --color-secondary: #222;
+  --color-pink: #d088a8;
+  --action-pink: #cf548b;
+  --color-grey: rgba(255, 255, 255, 0.1);
+  --color-white-grey: rgba(255, 255, 255, 0.9);
+  --color-white: #ffffff;
+  --color-green: #1e7e34;
+
+  --background-gradient: linear-gradient(to right bottom, var(--color-primary), var(--color-secondary));
+}
+
+/*Material overrides*/
+
+.mat-select-value {
+  color: white !important;
+}
+
+.mat-menu-content {
+  background-color: var(--color-secondary) !important;
+}
+
+.mat-button {
+  background-color: var(--color-white-grey);
+}
+
+.mat-success {
+  background-color: var(--action-pink);
+  color: var(--color-white-grey);
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
+}
+
+.mat-button-focus-overlay {
+  background-color: transparent !important;
+}
+
+.mat-tab-label {
+  font-size: 17px !important;
+  padding: 7px;
+  background-color: transparent;
+  color: var(--color-white-grey);
+  font-weight: 400;
+}
+
+.mat-focused {
+  /*change color of label*/
+  color: var(--color-white-grey) !important;
+}
+
+.mat-form-field-label {
+  /*change color of label*/
+  color: var(--color-white-grey) !important;
+}
+
+.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: var(--color-white-grey) !important;
+}
+
+.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: var(--color-white-grey) !important;
+}
+
+mat-datepicker-toggle {
+  color: var(--color-white-grey) !important;
+}

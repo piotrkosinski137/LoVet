@@ -1,0 +1,38 @@
+<section class="hours-modal">
+  <div class="shift-container">
+    <button class="shift-button" mat-button mat-raised-button
+            (click)="select(9,13)">Morning Shift (9-13)
+    </button>
+    <button class="shift-button" mat-button mat-raised-button
+            (click)="select(14,18)">Evening Shift (14-18)
+    </button>
+    <button class="shift-button" mat-button mat-raised-button
+            (click)="select(9,18)">All day
+    </button>
+    <button class="shift-button" mat-button mat-raised-button
+            (click)="deselect(9,18)">Deselect all
+    </button>
+  </div>
+  <div class="hours-container">
+    <div *ngFor="let hour of hours">
+      <div *ngIf="hour.hourDate.getMinutes() === 0">
+        <div class="hour-button"
+                (click)="selectHour(hour.hourDate.getHours())">
+          {{hour.hourDate.getHours()}}</div>
+        <mat-divider style="margin-bottom: 3px"></mat-divider>
+      </div>
+
+      <div>
+        <div class="hour-button"
+                [ngClass]="hour.isSelected ? 'selected' : 'unselected'"
+                (click)="minutesPeriodSelected(hour)"
+        >{{hour.hourDate | getDatePart: 'HOUR'}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="action-buttons">
+    <button class="action-button" color="success" mat-button mat-raised-button [mat-dialog-close]="modalSubmitted()">Submit</button>
+    <button class="action-button" mat-button mat-raised-button [mat-dialog-close]="">Cancel</button>
+  </div>
+</section>
+

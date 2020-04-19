@@ -1,0 +1,7 @@
+.booking-week {
+  display: flex;
+  justify-content: space-between;
+  .booking-day {
+    flex: 0 0 13%;
+  }
+}

@@ -1,0 +1,29 @@
+.booking-hours-item {
+  display: flex;
+  margin-bottom: 7px;
+  width: 100%;
+  padding: 0;
+  background-color: var(--color-grey);
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 5px;
+  color: var(--color-white);
+
+  &:disabled {
+    background-color: transparent;
+  }
+
+  &:hover {
+    box-shadow: inset 0 0 3px 3px var(--color-primary);
+    background-color: var(--color-pink);
+  }
+
+  &:hover:disabled {
+    background-color: transparent;
+    cursor: auto;
+  }
+}
+
+
+

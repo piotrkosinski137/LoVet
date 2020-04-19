@@ -1,0 +1,29 @@
+.month-header {
+  text-align: center;
+
+  .month-name {
+    color: var(--color-white-grey);
+    font-size: 40px;
+  }
+
+}
+
+.day-names-container {
+  display: flex;
+  margin-bottom: 15px;
+  .day {
+    flex: 0 0 14.2%;
+    text-align: center;
+    color: var(--color-pink);
+    font-size: 20px;
+  }
+}
+
+.days-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  .day-container {
+    flex: 0 0 14.2%;
+  }
+}

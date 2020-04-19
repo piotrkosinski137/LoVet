@@ -1,0 +1,10 @@
+<div class="booking-week">
+  <ng-container *ngFor="let iterator of sevenDaysArray; let daysToAdd=index">
+    <div class="booking-day">
+      <app-visit-calendar-column
+        [plusDays]="daysToAdd"
+        [visitBookings]="getVisitBookings(daysToAdd)"></app-visit-calendar-column>
+    </div>
+  </ng-container>
+</div>
+

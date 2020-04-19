@@ -1,0 +1,33 @@
+.container {
+  padding: 30px;
+  width: 350px;
+  height: 300px;
+  background-image: var(--background-gradient);
+  font-weight: 400;
+
+  display: flex;
+  flex-direction: column;
+
+  .row {
+    flex: 1;
+
+    .title {
+      color: var(--color-pink);
+      padding: 5px 0;
+    }
+
+    .input-element {
+      width: 100%;
+    }
+
+    .description {
+      color: var(--color-white-grey);
+    }
+  }
+
+  .button {
+    margin-right: 5px;
+  }
+}
+
+

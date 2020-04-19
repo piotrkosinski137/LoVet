@@ -1,0 +1,20 @@
+<div class="navbar-container">
+  <div class="navbar-left">
+    <div class="logo">
+      <strong>LOGO</strong>
+    </div>
+    <a routerLink="/doctor/working-hours" class="link-item">Select working</a>
+    <a routerLink="/pet-owner/visit" class="link-item">Book visit</a>
+  </div>
+  <div class="navbar-right">
+    <div [matMenuTriggerFor]="menu">
+      <mat-icon color="accent" class="hamburger-icon">menu</mat-icon>
+    </div>
+    <mat-menu #menu="matMenu">
+      <div class="hamburger-dropdown">
+        <a routerLink="/login" class="link-item">Login</a>
+        <a routerLink="/logout" class="link-item" (click)="logout()">Logout</a>
+      </div>
+    </mat-menu>
+  </div>
+</div>

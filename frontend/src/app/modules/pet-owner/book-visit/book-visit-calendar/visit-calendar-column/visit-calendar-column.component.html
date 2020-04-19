@@ -1,0 +1,7 @@
+<app-visit-calendar-column-date [plusDays]="plusDays"></app-visit-calendar-column-date>
+<ng-container *ngFor="let booking of visitBookings">
+  <button class="booking-hours-item" [disabled]="booking.isBooked"
+       (click)="onVisitBookingClicked(booking)">
+    <p>{{getHour(booking)}}</p>
+  </button>
+</ng-container>
