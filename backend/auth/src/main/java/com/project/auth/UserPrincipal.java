@@ -1,6 +1,6 @@
 package com.project.auth;
 
-import com.project.domain.auth.BaseEntity;
+import com.project.auth.domain.BaseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

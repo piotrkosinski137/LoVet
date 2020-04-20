@@ -1,7 +1,7 @@
 package com.project.auth;
 
-import com.project.domain.auth.BaseEntity;
-import com.project.usecase.auth.LoadBaseEntity;
+import com.project.auth.domain.BaseEntity;
+import com.project.auth.usecase.LoadBaseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;

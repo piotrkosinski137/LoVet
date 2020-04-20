@@ -1,8 +1,8 @@
 package com.project.auth.controller;
 
 import com.project.auth.jwt.JwtUtils;
-import com.project.domain.auth.BaseEntity;
-import com.project.usecase.auth.LoadBaseEntity;
+import com.project.auth.domain.BaseEntity;
+import com.project.auth.usecase.LoadBaseEntity;
 import javax.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

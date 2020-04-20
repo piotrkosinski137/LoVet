@@ -1,7 +1,7 @@
 package com.project;
 
-import com.project.domain.auth.BaseEntity;
-import com.project.usecase.auth.SaveBaseEntity;
+import com.project.auth.domain.BaseEntity;
+import com.project.auth.usecase.SaveBaseEntity;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
