@@ -9,7 +9,7 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item class="dropdown-option">
+          <button mat-menu-item class="dropdown-option" (click)="onPetVisitHistoryClick(pet.id)">
             <span>Visit history</span>
           </button>
           <button mat-menu-item class="dropdown-option">

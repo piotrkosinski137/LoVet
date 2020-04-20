@@ -1,0 +1,27 @@
+.card {
+  background-color: var(--color-secondary-opacity);
+  padding: 40px;
+  font-size: 23px;
+  .row {
+    .content {
+      color: var(--color-white-grey);
+    }
+
+    margin: 5px 0;
+    display: flex;
+  }
+
+  .title {
+    width: 200px;
+    color: var(--color-pink);
+  }
+
+  .description {
+    margin-top: 20px;
+
+    .description-text {
+      font-size: 15px;
+      color: var(--color-white-grey);
+    }
+  }
+}

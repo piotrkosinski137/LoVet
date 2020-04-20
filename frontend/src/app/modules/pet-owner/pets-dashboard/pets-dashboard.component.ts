@@ -11,9 +11,9 @@ import {AddPetModalComponent} from "./add-pet-modal/add-pet-modal.component";
 export class PetsDashboardComponent implements OnInit {
 
   pets: Pet[] = [
-    {name: 'Kluszek', dateOfBirth: new Date()},
-    {name: 'Karotek', dateOfBirth: new Date()},
-    {name: 'Kefir', dateOfBirth: new Date()}
+    {id: 'fd488ff8-1718-47c2-900a-67eef6606d4f', name: 'Kluszek', dateOfBirth: new Date()},
+    {id: 'Dd488ff8-1718-47c2-900a-67eef6606d4f', name: 'Karotek', dateOfBirth: new Date()},
+    {id: 'Vd488ff8-1718-47c2-900a-67eef6606d4f', name: 'Kefir', dateOfBirth: new Date()}
   ]
 
   constructor(private dialog: MatDialog) {

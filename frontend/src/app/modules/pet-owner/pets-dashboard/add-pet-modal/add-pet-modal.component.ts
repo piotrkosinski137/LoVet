@@ -30,7 +30,8 @@ export class AddPetModalComponent implements OnInit {
   onModalClose(isSubmitted: boolean) {
     return {
       isSubmitted: isSubmitted,
-      pet: new Pet(this.addPetForm.value.name, this.addPetForm.value.yearOfBirth, this.imageFile)
+      pet: new Pet("fd488ff8-1718-47c2-900a-67eef6606d4f",
+        this.addPetForm.value.name, this.addPetForm.value.yearOfBirth, this.imageFile)
     }
   }
 }

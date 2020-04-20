@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Pet} from "../../model/pet";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-pet-card',
@@ -13,7 +14,7 @@ export class PetCardComponent implements OnInit {
 
   imageUrl: string | ArrayBuffer = "https://bulma.io/images/placeholders/128x128.png";
 
-  constructor() {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -29,5 +30,9 @@ export class PetCardComponent implements OnInit {
         this.imageUrl = reader.result;
       };
     }
+  }
+
+  onPetVisitHistoryClick(id: string) {
+    this.router.navigate([id + '/visits'], {relativeTo: this.activatedRoute})
   }
 }
