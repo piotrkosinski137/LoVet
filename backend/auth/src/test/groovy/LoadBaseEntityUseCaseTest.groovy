@@ -1,7 +1,7 @@
 import com.project.auth.domain.BaseEntity
+import com.project.auth.usecase.exceptions.BaseEntityNotFound
 import com.project.auth.usecase.gateway.BaseEntityQueryGateway
-import com.project.auth.usecase.impl.LoadBaseEntityUseCase
-import com.project.auth.usecase.impl.exceptions.BaseEntityNotFound
+import com.project.auth.usecase.LoadBaseEntityUseCase
 import spock.lang.Specification
 
 class LoadBaseEntityUseCaseTest extends Specification {
@@ -16,7 +16,7 @@ class LoadBaseEntityUseCaseTest extends Specification {
     baseEntityQueryGateway.loadByUsername(username) >> Optional.of(baseEntity)
 
     when:
-    def result = loadBaseEntity.loadByUsername(username)
+    def result = loadBaseEntity.findByUsername(username)
 
     then:
     result == baseEntity
@@ -27,7 +27,7 @@ class LoadBaseEntityUseCaseTest extends Specification {
     baseEntityQueryGateway.loadByUsername(_ as String) >> Optional.empty()
 
     when:
-    loadBaseEntity.loadByUsername("unknownUsername")
+    loadBaseEntity.findByUsername("unknownUsername")
 
     then:
     thrown(BaseEntityNotFound)

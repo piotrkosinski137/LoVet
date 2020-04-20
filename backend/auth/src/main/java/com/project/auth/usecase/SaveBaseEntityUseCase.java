@@ -1,7 +1,8 @@
-package com.project.auth.usecase.impl;
+package com.project.auth.usecase;
 
 import com.project.auth.domain.BaseEntity;
-import com.project.auth.usecase.SaveBaseEntity;
+import com.project.auth.domain.EntityId;
+import com.project.auth.domain.usecase.SaveBaseEntity;
 import com.project.auth.usecase.gateway.BaseEntityCommandGateway;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ public class SaveBaseEntityUseCase implements SaveBaseEntity {
   }
 
   @Override
-  public void save(BaseEntity baseEntity) {
-    gateway.save(baseEntity);
+  public EntityId save(BaseEntity baseEntity) {
+    return gateway.save(baseEntity);
   }
 }

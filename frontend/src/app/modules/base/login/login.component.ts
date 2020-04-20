@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
 
     this.loginForm = this.formBuilder.group({
-      username: ['test', Validators.required],
+      email: ['test@gmail.com', Validators.required],
       password: ['test', Validators.required]
     });
   }
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.loadingService.loadingSubject.next(true);
-    this.authService.login(this.fields.username.value, this.fields.password.value)
+    this.authService.login(this.fields.email.value, this.fields.password.value)
     .subscribe(
       authResponse => {
         localStorage.setItem('token', authResponse.token);

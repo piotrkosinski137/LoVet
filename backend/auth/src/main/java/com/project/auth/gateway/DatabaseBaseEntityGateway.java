@@ -1,6 +1,7 @@
 package com.project.auth.gateway;
 
 import com.project.auth.domain.BaseEntity;
+import com.project.auth.domain.EntityId;
 import com.project.auth.usecase.gateway.BaseEntityCommandGateway;
 import com.project.auth.usecase.gateway.BaseEntityQueryGateway;
 import java.util.Optional;
@@ -16,12 +17,17 @@ public class DatabaseBaseEntityGateway implements BaseEntityCommandGateway, Base
   }
 
   @Override
-  public void save(BaseEntity baseEntity) {
-    repository.save(baseEntity);
+  public EntityId save(BaseEntity baseEntity) {
+    return repository.save(baseEntity).getId();
   }
 
   @Override
   public Optional<BaseEntity> loadByUsername(String username) {
-    return repository.findByCredentialsUsername(username);
+    return repository.findByCredentialsEmail(username);
+  }
+
+  @Override
+  public boolean existsByUsername(String username) {
+    return repository.existsByCredentialsEmail(username);
   }
 }

@@ -1,7 +1,7 @@
 package com.project;
 
 import com.project.auth.domain.BaseEntity;
-import com.project.auth.usecase.SaveBaseEntity;
+import com.project.auth.domain.usecase.SaveBaseEntity;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,6 +24,6 @@ public class Main implements CommandLineRunner {
 
     @Override
     public void run(String... args)  {
-        saveBaseEntity.save(new BaseEntity("test", passwordEncoder.encode("test")));
+        saveBaseEntity.save(new BaseEntity("test@gmail.com", passwordEncoder.encode("test")));
     }
 }

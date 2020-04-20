@@ -6,23 +6,23 @@ import java.util.Objects;
 @Embeddable
 class Credentials {
 
-  private String username;
+  private String email;
   private String password;
 
   private Credentials() {
   }
 
-  private Credentials(String username, String password) {
-    this.username = username;
+  private Credentials(String email, String password) {
+    this.email = email;
     this.password = password;
   }
 
-  public static Credentials create(String username, String password) {
-    return new Credentials(username, password);
+  public static Credentials create(String email, String password) {
+    return new Credentials(email, password);
   }
 
-  public String getUsername() {
-    return username;
+  public String getEmail() {
+    return email;
   }
 
   public String getPassword() {
@@ -38,12 +38,12 @@ class Credentials {
       return false;
     }
     Credentials that = (Credentials) o;
-    return username.equals(that.username) &&
+    return email.equals(that.email) &&
       password.equals(that.password);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, password);
+    return Objects.hash(email, password);
   }
 }

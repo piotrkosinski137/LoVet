@@ -17,6 +17,7 @@
     <module>spring-app</module>
     <module>auth</module>
     <module>core</module>
+    <module>event</module>
     <module>integration-tests</module>
   </modules>
 </project>

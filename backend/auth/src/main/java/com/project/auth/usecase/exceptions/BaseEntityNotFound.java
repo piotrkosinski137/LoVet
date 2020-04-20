@@ -1,4 +1,4 @@
-package com.project.auth.usecase.impl.exceptions;
+package com.project.auth.usecase.exceptions;
 
 public class BaseEntityNotFound extends RuntimeException {
 

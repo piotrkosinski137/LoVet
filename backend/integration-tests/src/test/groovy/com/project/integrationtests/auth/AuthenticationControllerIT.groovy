@@ -19,7 +19,7 @@ class AuthenticationControllerIT extends EntrypointTest {
 
   def "should return token after successful login"() {
     given:
-    def request = new JwtAuthenticationRequest("test", "test")
+    def request = new JwtAuthenticationRequest("test@gmail.com", "test")
 
     when:
     def result = performPost(request, "/auth")

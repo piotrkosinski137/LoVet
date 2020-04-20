@@ -8,8 +8,8 @@
         <div class="login-dashboard">
           <mat-form-field>
             <input type="text" [style.fontSize.px]=20 matInput placeholder="Your email"
-                   formControlName="username" class="login-input">
-            <mat-error *ngIf="loginForm.controls['username'].errors?.required">Username is required
+                   formControlName="email" class="login-input">
+            <mat-error *ngIf="loginForm.controls['email'].errors?.required">Email is required
             </mat-error>
           </mat-form-field>
           <mat-form-field>

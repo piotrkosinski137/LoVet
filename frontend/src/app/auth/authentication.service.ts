@@ -7,8 +7,8 @@ export class AuthenticationService {
   constructor(private http: HttpClient) {
   }
 
-  login(username: string, password: string) {
-    return this.http.post<any>('/api/auth', {username: username, password: password});
+  login(email: string, password: string) {
+    return this.http.post<any>('/api/auth', {email: email, password: password});
   }
 
   getLoggedInUser() {

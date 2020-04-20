@@ -19,8 +19,8 @@ public class BaseEntity {
   public BaseEntity() {
   }
 
-  public BaseEntity(String username, String password) {
-    this.credentials = Credentials.create(username, password);
+  public BaseEntity(String email, String password) {
+    this.credentials = Credentials.create(email, password);
     this.id = EntityId.create();
   }
 
@@ -37,7 +37,7 @@ public class BaseEntity {
   }
 
   public String getUsername() {
-    return credentials.getUsername();
+    return credentials.getEmail();
   }
 
   public String getPassword() {

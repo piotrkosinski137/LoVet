@@ -6,4 +6,6 @@ import java.util.Optional;
 public interface BaseEntityQueryGateway {
 
   Optional<BaseEntity> loadByUsername(String username);
+
+  boolean existsByUsername(String username);
 }
