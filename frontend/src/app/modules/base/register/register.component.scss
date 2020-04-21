@@ -10,17 +10,15 @@
       color: var(--color-pink);
       margin-bottom: 10px;
     }
-
     background-color: rgba(0, 0, 0, 0.1);
-
     .dashboard {
       width: 400px;
       display: flex;
       flex-direction: column;
 
       .input {
+        margin-bottom: 5px;
         color: var(--color-white-grey);
-        margin: 5px 0;
       }
 
       .spinner-container {
@@ -34,5 +32,3 @@
     }
   }
 }
-
-

@@ -1,5 +1,5 @@
 import com.project.auth.domain.BaseEntity
-import com.project.auth.usecase.exceptions.BaseEntityNotFound
+import com.project.auth.usecase.exceptions.InvalidCredentials
 import com.project.auth.usecase.gateway.BaseEntityQueryGateway
 import com.project.auth.usecase.LoadBaseEntityUseCase
 import spock.lang.Specification
@@ -30,6 +30,6 @@ class LoadBaseEntityUseCaseTest extends Specification {
     loadBaseEntity.findByUsername("unknownUsername")
 
     then:
-    thrown(BaseEntityNotFound)
+    thrown(InvalidCredentials)
   }
 }

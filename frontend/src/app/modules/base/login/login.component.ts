@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../../auth/authentication.service';
 import {LoadingService} from '../../../api/loading.service';
+import {MessageService} from "../../../api/commons/message.service";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder, private router: Router, private authService: AuthenticationService,
-    private loadingService: LoadingService) {
+    private loadingService: LoadingService, private messageService: MessageService) {
     if (this.authService.isLoggedIn()) {
       this.router.navigate(['/']);
     }
@@ -22,12 +23,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if(this.authService.isLoggedIn()) {
-      this.router.navigateByUrl('/dashboard')
+      this.router.navigateByUrl('/pet-owner/book-visit')
     }
 
-
     this.loginForm = this.formBuilder.group({
-      email: ['test@gmail.com', Validators.required],
+      email: ['test@gmail.com', [Validators.required, Validators.email]],
       password: ['test', Validators.required]
     });
   }
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       },
       error => {
         this.loadingService.loadingSubject.next(false);
-
+        this.messageService.error(error.error.details);
       });
   }
 }

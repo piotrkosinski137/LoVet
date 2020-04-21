@@ -1,0 +1,75 @@
+<div class="container">
+  <mat-card class="card">
+    <mat-card-header class="card-header">
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" autocomplete="off">
+        <div class="dashboard">
+          <mat-form-field class="input">
+            <input type="text" [style.fontSize.px]=20 matInput placeholder="Your email"
+                   formControlName="email">
+            <mat-error *ngIf="registerForm.controls['email'].errors?.required">Email is required
+            </mat-error>
+            <mat-error *ngIf="registerForm.controls['email'].errors?.email">Invalid email
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="input">
+            <input type="password" [style.fontSize.px]=20 matInput placeholder="Your password"
+                   formControlName="password">
+            <mat-error *ngIf="registerForm.controls['password'].errors?.required">Password is
+              required
+            </mat-error>
+            <mat-error *ngIf="registerForm.controls['password'].errors?.minlength">Password must
+              contain at least 7 characters
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="input">
+            <input type="password" [style.fontSize.px]=20 matInput placeholder="Your password"
+                   formControlName="repeatPassword">
+            <mat-error *ngIf="registerForm.controls['repeatPassword'].errors?.required">
+              repeatPassword is required
+            </mat-error>
+            <mat-error *ngIf="!registerForm.controls['repeatPassword'].errors?.required &&
+            registerForm.controls['repeatPassword'].errors">Password and RepeatPassword must be the
+              same
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="input">
+            <input type="text" [style.fontSize.px]=20 matInput placeholder="Your name"
+                   formControlName="name">
+            <mat-error *ngIf="registerForm.controls['name'].errors?.required">Name is
+              required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="input">
+            <input type="text" [style.fontSize.px]=20 matInput placeholder="Your surname"
+                   formControlName="surname">
+            <mat-error *ngIf="registerForm.controls['surname'].errors?.required">Surname is
+              required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="input">
+            <input type="number" [style.fontSize.px]=20 matInput placeholder="Your phone number"
+                   formControlName="phoneNumber">
+            <mat-error *ngIf="registerForm.controls['phoneNumber'].errors?.required">Phone number is
+              required
+            </mat-error>
+            <mat-error *ngIf="registerForm.controls['phoneNumber'].errors?.max ||
+                registerForm.controls['phoneNumber'].errors?.min">Phone number should have 9 digits
+            </mat-error>
+          </mat-form-field>
+          <button *ngIf="!(loadingService.loading$ | async)" [disabled]="registerForm.invalid"
+                  type="submit" class="button"
+                  mat-raised-button color="success">Submit
+          </button>
+          <div class="spinner-container">
+            <mat-spinner *ngIf="loadingService.loading$ | async" [diameter]="40"></mat-spinner>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+

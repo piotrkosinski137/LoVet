@@ -10,6 +10,7 @@ import com.project.auth.usecase.exceptions.PetOwnerAlreadyExist;
 import com.project.event.PetOwnerCreated;
 import java.util.regex.Pattern;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,17 +19,19 @@ public class RegisterPetOwner {
   private final LoadBaseEntity loadBaseEntity;
   private final SaveBaseEntity saveBaseEntity;
   private final ApplicationEventPublisher publisher;
+  private final PasswordEncoder encoder;
 
   public RegisterPetOwner(LoadBaseEntity loadBaseEntity, SaveBaseEntity saveBaseEntity,
-      ApplicationEventPublisher publisher) {
+      ApplicationEventPublisher publisher, PasswordEncoder encoder) {
     this.loadBaseEntity = loadBaseEntity;
     this.saveBaseEntity = saveBaseEntity;
     this.publisher = publisher;
+    this.encoder = encoder;
   }
 
   public void register(RegisterPetOwnerDto dto) {
     validateEmail(dto.getEmail());
-    EntityId userId = saveBaseEntity.save(new BaseEntity(dto.getEmail(), dto.getPassword()));
+    EntityId userId = saveBaseEntity.save(new BaseEntity(dto.getEmail(), encoder.encode(dto.getPassword())));
 
     publisher.publishEvent(new PetOwnerCreated(this,
         userId.toString(),
@@ -43,10 +46,9 @@ public class RegisterPetOwner {
   }
 
   private void validateEmailSyntax(String email) {
-    String regex = "^(.+)@(.+)$";
-    Pattern pattern = Pattern.compile(regex);
+    final Pattern pattern = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
-    if (pattern.matcher(email).matches()) {
+    if (!pattern.matcher(email).matches()) {
       throw new InvalidEmailSyntax(email);
     }
   }

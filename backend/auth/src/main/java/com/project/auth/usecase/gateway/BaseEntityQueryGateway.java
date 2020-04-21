@@ -7,5 +7,5 @@ public interface BaseEntityQueryGateway {
 
   Optional<BaseEntity> loadByUsername(String username);
 
-  boolean existsByUsername(String username);
+  boolean existsByEmail(String username);
 }

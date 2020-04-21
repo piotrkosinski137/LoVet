@@ -1,4 +1,4 @@
-package com.project.auth.controller;
+package com.project.auth.controller.dto;
 
 import java.io.Serializable;
 
@@ -9,7 +9,7 @@ public class JwtAuthenticationRequest implements Serializable {
   private String email;
   private String password;
 
-  private JwtAuthenticationRequest() {
+  public  JwtAuthenticationRequest() {
   }
 
   public JwtAuthenticationRequest(String email, String password) {
@@ -17,19 +17,19 @@ public class JwtAuthenticationRequest implements Serializable {
     this.password = password;
   }
 
-  String getEmail() {
+  public String getEmail() {
     return this.email;
   }
 
-  String getPassword() {
+  public String getPassword() {
     return this.password;
   }
 
-  void setEmail(String email) {
+  public void setEmail(String email) {
     this.email = email;
   }
 
-  void setPassword(String password) {
+  public void setPassword(String password) {
     this.password = password;
   }
 }

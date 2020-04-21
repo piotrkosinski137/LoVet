@@ -8,6 +8,7 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+
 :root {
   --color-primary: #332b3c;
   --color-secondary: #222;
@@ -21,6 +22,14 @@ body {
   --color-green: #1e7e34;
 
   --background-gradient: linear-gradient(to right bottom, var(--color-primary), var(--color-secondary));
+}
+
+
+/*Remove scrollbar from number input fields*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /*Material overrides*/

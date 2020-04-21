@@ -1,25 +1,25 @@
 <div class="container">
   <mat-card class="card">
     <mat-card-header class="card-header">
-      <mat-card-title>Login form</mat-card-title>
+      <mat-card-title>Login</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-        <div class="login-dashboard">
-          <mat-form-field>
+        <div class="dashboard">
+          <mat-form-field class="input">
             <input type="text" [style.fontSize.px]=20 matInput placeholder="Your email"
-                   formControlName="email" class="login-input">
+                   formControlName="email">
             <mat-error *ngIf="loginForm.controls['email'].errors?.required">Email is required
             </mat-error>
           </mat-form-field>
-          <mat-form-field>
+          <mat-form-field class="input">
             <input type="password" [style.fontSize.px]=20 matInput placeholder="Your password"
-                   formControlName="password" class="login-input">
+                   formControlName="password">
             <mat-error *ngIf="loginForm.controls['password'].errors?.required">Password is required
             </mat-error>
           </mat-form-field>
           <button *ngIf="!(loadingService.loading$ | async)" [disabled]="loginForm.invalid"
-                  type="submit"
+                  type="submit" class="button"
                   mat-raised-button color="success">Submit
           </button>
           <div class="spinner-container">

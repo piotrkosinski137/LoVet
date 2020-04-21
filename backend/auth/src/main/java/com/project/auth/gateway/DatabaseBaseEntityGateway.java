@@ -27,7 +27,7 @@ public class DatabaseBaseEntityGateway implements BaseEntityCommandGateway, Base
   }
 
   @Override
-  public boolean existsByUsername(String username) {
+  public boolean existsByEmail(String username) {
     return repository.existsByCredentialsEmail(username);
   }
 }

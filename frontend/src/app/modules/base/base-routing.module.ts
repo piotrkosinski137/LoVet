@@ -4,10 +4,12 @@ import {NgModule} from '@angular/core';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {DoctorModule} from "../doctor/doctor.module";
 import {PetOwnerModule} from "../pet-owner/pet-owner.module";
+import {RegisterComponent} from "./register/register.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
   {path: 'dashboard', component: DashboardComponent},
   {
     path: 'doctor', children: [

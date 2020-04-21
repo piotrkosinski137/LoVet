@@ -10,6 +10,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LayoutComponent} from './layout/layout.component';
 import {MaterialModule} from '../../material.module';
 import {DashboardComponent} from './dashboard/dashboard.component';
+import {ToastrModule} from 'ngx-toastr'
+import {RegisterComponent} from "./register/register.component";
 
 
 @NgModule({
@@ -18,13 +20,15 @@ import {DashboardComponent} from './dashboard/dashboard.component';
     BaseRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    ToastrModule.forRoot()
   ],
   declarations: [
     LoginComponent,
     NavbarComponent,
     LayoutComponent,
-    DashboardComponent
+    DashboardComponent,
+    RegisterComponent
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

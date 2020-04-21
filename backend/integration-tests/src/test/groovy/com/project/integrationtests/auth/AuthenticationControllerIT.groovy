@@ -1,6 +1,6 @@
 package com.project.integrationtests.auth
 
-import com.project.auth.controller.JwtAuthenticationRequest
+import com.project.auth.controller.dto.JwtAuthenticationRequest
 import com.project.integrationtests.EntrypointTest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.web.servlet.MockMvc
