@@ -1,4 +1,4 @@
-package com.project.usecase.event;
+package com.project.usecase.event.petowner;
 
 import com.project.domain.petowner.PetOwner;
 import com.project.domain.petowner.gateway.PetOwnerGateway;

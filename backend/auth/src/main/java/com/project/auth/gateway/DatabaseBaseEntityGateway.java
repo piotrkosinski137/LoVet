@@ -22,7 +22,7 @@ public class DatabaseBaseEntityGateway implements BaseEntityCommandGateway, Base
   }
 
   @Override
-  public Optional<BaseEntity> loadByUsername(String username) {
+  public Optional<BaseEntity> findByUsername(String username) {
     return repository.findByCredentialsEmail(username);
   }
 

@@ -17,7 +17,7 @@ public class LoadBaseEntityUseCase implements LoadBaseEntity {
 
   @Override
   public BaseEntity findByUsername(String email) {
-    return gateway.loadByUsername(email).orElseThrow(InvalidCredentials::new);
+    return gateway.findByUsername(email).orElseThrow(InvalidCredentials::new);
   }
 
   @Override

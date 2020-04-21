@@ -1,4 +1,4 @@
-package com.project.usecase.event;
+package com.project.usecase.event.petowner.events;
 
 import com.project.event.PetOwnerCreated;
 import org.springframework.context.event.EventListener;
@@ -13,7 +13,7 @@ public class PetOwnerCreatedListener {
 //    this.registerPetOwner = registerPetOwner;
 //  }
 
-  @EventListener
+
   private void handlePetOwnerCreated(PetOwnerCreated petOwnerCreated) {
 
   }

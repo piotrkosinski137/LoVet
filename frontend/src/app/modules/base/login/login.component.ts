@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {AuthenticationService} from '../../../auth/authentication.service';
 import {LoadingService} from '../../../api/loading.service';
 import {MessageService} from "../../../api/commons/message.service";
+import {PetOwnerService} from "../../../api/pet-owner.service";
 
 @Component({
   selector: 'app-login',
@@ -15,14 +16,14 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder, private router: Router, private authService: AuthenticationService,
-    private loadingService: LoadingService, private messageService: MessageService) {
+    private loadingService: LoadingService, private messageService: MessageService, private petOwnerService: PetOwnerService) {
     if (this.authService.isLoggedIn()) {
       this.router.navigate(['/']);
     }
   }
 
   ngOnInit() {
-    if(this.authService.isLoggedIn()) {
+    if (this.authService.isLoggedIn()) {
       this.router.navigateByUrl('/pet-owner/book-visit')
     }
 
@@ -44,6 +45,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', authResponse.token);
         this.router.navigate(['/pet-owner/book-visit']);
         this.loadingService.loadingSubject.next(false);
+        this.petOwnerService.getLoggedInPetOwner()
       },
       error => {
         this.loadingService.loadingSubject.next(false);

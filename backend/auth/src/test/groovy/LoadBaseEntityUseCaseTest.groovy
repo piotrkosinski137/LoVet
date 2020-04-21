@@ -13,7 +13,7 @@ class LoadBaseEntityUseCaseTest extends Specification {
     given:
     def username = "username"
     def baseEntity = Mock(BaseEntity)
-    baseEntityQueryGateway.loadByUsername(username) >> Optional.of(baseEntity)
+    baseEntityQueryGateway.findByUsername(username) >> Optional.of(baseEntity)
 
     when:
     def result = loadBaseEntity.findByUsername(username)
@@ -24,7 +24,7 @@ class LoadBaseEntityUseCaseTest extends Specification {
 
   def "should throw exception when there is no BaseEntity with given username"() {
     given:
-    baseEntityQueryGateway.loadByUsername(_ as String) >> Optional.empty()
+    baseEntityQueryGateway.findByUsername(_ as String) >> Optional.empty()
 
     when:
     loadBaseEntity.findByUsername("unknownUsername")

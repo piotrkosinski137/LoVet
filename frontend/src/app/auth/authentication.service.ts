@@ -16,10 +16,6 @@ export class AuthenticationService {
     return this.http.post<any>('/api/auth/register/pet-owner', registerRequest);
   }
 
-  getLoggedInUser() {
-    return this.http.get<any>('/api/current');
-  }
-
   logout() {
     localStorage.removeItem('token');
   }
