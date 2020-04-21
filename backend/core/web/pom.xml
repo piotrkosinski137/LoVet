@@ -14,7 +14,7 @@
     <spring-web.version>5.1.10.RELEASE</spring-web.version>
   </properties>
 
-  <artifactId>web</artifactId>
+  <artifactId>core-web</artifactId>
   <dependencies>
     <dependency>
       <groupId>org.springframework</groupId>
@@ -28,7 +28,7 @@
     </dependency>
     <dependency>
       <groupId>com.project</groupId>
-      <artifactId>usecase</artifactId>
+      <artifactId>core-usecase</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
   </dependencies>

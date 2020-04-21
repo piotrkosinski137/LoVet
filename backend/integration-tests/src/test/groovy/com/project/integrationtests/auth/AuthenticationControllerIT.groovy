@@ -22,7 +22,7 @@ class AuthenticationControllerIT extends EntrypointTest {
     def request = new JwtAuthenticationRequest("test@gmail.com", "test")
 
     when:
-    def result = performPost(request, "/auth")
+    def result = performPost(request, "/auth/login")
 
     then:
     result.andExpect(status().isOk())
@@ -34,9 +34,9 @@ class AuthenticationControllerIT extends EntrypointTest {
     def request = new JwtAuthenticationRequest("wrongUsername", "wrongPassword")
 
     when:
-    def result = performPost(request, "/auth")
+    def result = performPost(request, "/auth/login")
 
     then:
-    result.andExpect(status().isForbidden())
+    result.andExpect(status().isBadRequest())
   }
 }
