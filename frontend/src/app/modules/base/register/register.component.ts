@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder, private router: Router, private authService: AuthenticationService,
-    private loadingService: LoadingService, private messageService: MessageService) {
+    public loadingService: LoadingService, private messageService: MessageService) {
   }
 
   ngOnInit() {

@@ -4,6 +4,18 @@
   "newProjectRoot": "projects",
   "projects": {
     "project-front": {
+      "i18n": {
+        "locales": {
+          "pl": {
+            "translation": "src/locale/messages.pl.xlf",
+            "baseHref": ""
+          },
+          "en": {
+            "translation": "src/locale/messages.en.xlf",
+            "baseHref": ""
+          }
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,6 +25,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/project-front",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -51,22 +64,36 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             },
             "pl": {
               "aot": true,
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "outputPath": "dist/project-front/",
               "i18nFile": "src/locale/messages.pl.xlf",
-              "i18nFormat": "xlf",
               "i18nLocale": "pl",
               "i18nMissingTranslation": "error"
             },
             "en": {
               "aot": true,
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "outputPath": "dist/project-front/",
               "i18nFile": "src/locale/messages.en.xlf",
-              "i18nFormat": "xlf",
               "i18nLocale": "en",
               "i18nMissingTranslation": "error"
             }
@@ -159,7 +186,7 @@
   "defaultProject": "project-front",
   "schematics": {
     "@schematics/angular:component": {
-      "styleext": "scss"
+      "style": "scss"
     }
   }
 }

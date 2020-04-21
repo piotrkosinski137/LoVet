@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder, private router: Router, private authService: AuthenticationService,
-    private loadingService: LoadingService, private messageService: MessageService, private petOwnerService: PetOwnerService) {
+    public loadingService: LoadingService, private messageService: MessageService, private petOwnerService: PetOwnerService) {
     if (this.authService.isLoggedIn()) {
       this.router.navigate(['/']);
     }
