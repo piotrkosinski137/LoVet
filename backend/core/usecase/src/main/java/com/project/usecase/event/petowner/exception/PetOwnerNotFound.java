@@ -1,8 +1,12 @@
 package com.project.usecase.event.petowner.exception;
 
-public class PetOwnerNotFound extends RuntimeException {
+import static com.project.errors.ErrorCode.E_PET_OWNER_01;
 
-  public PetOwnerNotFound() {
-    super("Pet Owner not found!");
+import com.project.errors.LoVetException;
+
+public class PetOwnerNotFound extends LoVetException {
+
+  public PetOwnerNotFound(String petOwnerId) {
+    super(E_PET_OWNER_01, String.format("Pet Owner with id %s doesn't exist", petOwnerId));
   }
 }

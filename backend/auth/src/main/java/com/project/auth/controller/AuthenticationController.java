@@ -1,13 +1,17 @@
 package com.project.auth.controller;
 
+import static com.project.errors.SuccessCode.S_AUTH_01;
+
 import com.project.auth.controller.dto.JwtAuthenticationRequest;
 import com.project.auth.controller.dto.JwtAuthenticationResponse;
+import com.project.auth.controller.dto.JwtRegisterResponse;
 import com.project.auth.controller.dto.RegisterPetOwnerDto;
 import com.project.auth.domain.BaseEntity;
 import com.project.auth.domain.usecase.LoadBaseEntity;
 import com.project.auth.jwt.JwtUtils;
 import com.project.auth.usecase.RegisterPetOwner;
 import com.project.auth.usecase.exceptions.InvalidCredentials;
+import com.project.errors.SuccessCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -45,8 +49,9 @@ public class AuthenticationController {
   }
 
   @PostMapping("/register/pet-owner")
-  public void register(@RequestBody RegisterPetOwnerDto dto) {
+  public JwtRegisterResponse register(@RequestBody RegisterPetOwnerDto dto) {
     registerPetOwner.register(dto);
+    return new JwtRegisterResponse(S_AUTH_01.name());
   }
 
   private void authenticate(String email, String password) {

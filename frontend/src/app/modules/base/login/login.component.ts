@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
       },
       error => {
         this.loadingService.loadingSubject.next(false);
-        this.messageService.error(error.error.details);
+        this.messageService.error(error.error?.errorCode);
       });
   }
 }

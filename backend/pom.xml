@@ -15,6 +15,7 @@
 
   <modules>
     <module>spring-app</module>
+    <module>commons</module>
     <module>auth</module>
     <module>core</module>
     <module>event</module>

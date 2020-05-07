@@ -51,10 +51,12 @@ export class RegisterComponent implements OnInit {
       authResponse => {
         this.router.navigate(['/login']);
         this.loadingService.loadingSubject.next(false);
+        this.messageService.success(authResponse.successCode);
       },
       error => {
+        console.log(error)
         this.loadingService.loadingSubject.next(false);
-        this.messageService.error(error.error.details);
+        this.messageService.error(error.error.errorCode);
       });
   }
 

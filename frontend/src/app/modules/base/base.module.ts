@@ -10,7 +10,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LayoutComponent} from './layout/layout.component';
 import {MaterialModule} from '../../material.module';
 import {DashboardComponent} from './dashboard/dashboard.component';
-import {ToastrModule} from 'ngx-toastr'
 import {RegisterComponent} from "./register/register.component";
 
 
@@ -20,8 +19,7 @@ import {RegisterComponent} from "./register/register.component";
     BaseRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule,
-    ToastrModule.forRoot()
+    MaterialModule
   ],
   declarations: [
     LoginComponent,

@@ -1,8 +1,11 @@
 package com.project.auth.usecase.exceptions;
 
-public class InvalidEmailSyntax extends RuntimeException {
+import static com.project.errors.ErrorCode.E_AUTH_02;
+import com.project.errors.LoVetException;
+
+public class InvalidEmailSyntax extends LoVetException {
 
   public InvalidEmailSyntax(String email) {
-    super(String.format("Email %s is invalid", email));
+    super(E_AUTH_02, String.format("Email %s is invalid", email));
   }
 }

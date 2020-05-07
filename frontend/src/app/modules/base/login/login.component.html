@@ -11,6 +11,8 @@
                    formControlName="email">
             <mat-error *ngIf="loginForm.controls['email'].errors?.required">Email is required
             </mat-error>
+            <mat-error *ngIf="loginForm.controls['email'].errors?.email">Invalid email format
+            </mat-error>
           </mat-form-field>
           <mat-form-field class="input">
             <input type="password" [style.fontSize.px]=20 matInput placeholder="Your password"

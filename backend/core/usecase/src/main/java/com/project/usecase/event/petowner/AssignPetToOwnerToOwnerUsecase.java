@@ -25,7 +25,7 @@ public class AssignPetToOwnerToOwnerUsecase implements AssignPetToOwner {
       petOwner.get().addPet(petId);
       petOwnerGateway.save(petOwner.get().toSnapshot());
     } else {
-      throw new PetOwnerNotFound();
+      throw new PetOwnerNotFound(petOwnerId.toString());
     }
   }
 }

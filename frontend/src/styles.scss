@@ -24,6 +24,18 @@ body {
   --background-gradient: linear-gradient(to right bottom, var(--color-primary), var(--color-secondary));
 }
 
+.snackbar-warn {
+  background-color: darkred;
+}
+
+.snackbar-info {
+  background-color: yellow;
+}
+
+.snackbar-success {
+  background-color: forestgreen;
+}
+
 
 /*Remove scrollbar from number input fields*/
 input::-webkit-outer-spin-button,

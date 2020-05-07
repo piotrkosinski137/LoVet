@@ -43,4 +43,9 @@ public class PetOwnerId {
   public int hashCode() {
     return Objects.hash(value);
   }
+
+  @Override
+  public String toString() {
+    return value.toString();
+  }
 }
