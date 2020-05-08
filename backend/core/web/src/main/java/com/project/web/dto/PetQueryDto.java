@@ -1,5 +1,4 @@
 package com.project.web.dto;
 
-public class PetDto {
-
+public class PetQueryDto {
 }

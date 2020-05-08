@@ -6,9 +6,9 @@ import org.springframework.context.ApplicationEvent;
 public class PetCreated extends ApplicationEvent {
 
   private final UUID petId;
-  private final UUID petOwnerId;
+  private final String petOwnerId;
 
-  public PetCreated(Object source, UUID petId, UUID petOwnerId) {
+  public PetCreated(Object source, UUID petId, String petOwnerId) {
     super(source);
     this.petId = petId;
     this.petOwnerId = petOwnerId;
@@ -18,7 +18,7 @@ public class PetCreated extends ApplicationEvent {
     return petId;
   }
 
-  public UUID getPetOwnerId() {
+  public String getPetOwnerId() {
     return petOwnerId;
   }
 }

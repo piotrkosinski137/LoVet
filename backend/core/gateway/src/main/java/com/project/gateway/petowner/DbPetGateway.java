@@ -21,7 +21,7 @@ public class DbPetGateway implements PetGateway {
   }
 
   @Override
-  public Collection<PetSnapshot> findAllFrom(UUID petOwnerId) {
+  public Collection<PetSnapshot> findAllFrom(String petOwnerId) {
     return petSnapshotRepository.findByPetOwnerId(petOwnerId);
   }
 }

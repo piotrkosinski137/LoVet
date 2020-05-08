@@ -2,7 +2,6 @@ package com.project.usecase.event.petowner;
 
 import com.project.domain.petowner.Pet;
 import com.project.domain.petowner.PetOwnerId;
-import com.project.domain.petowner.PetSnapshot;
 import com.project.domain.petowner.gateway.PetGateway;
 import com.project.domain.petowner.usecase.LoadPets;
 import java.util.Collection;

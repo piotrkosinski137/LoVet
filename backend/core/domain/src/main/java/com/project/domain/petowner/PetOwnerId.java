@@ -1,29 +1,20 @@
 package com.project.domain.petowner;
 
 import java.util.Objects;
-import java.util.UUID;
 
 public class PetOwnerId {
 
-  private UUID value;
+  private String value;
 
-  private PetOwnerId() {
-    this.value = UUID.randomUUID();
+  private PetOwnerId(String value) {
+    this.value = value;
   }
 
-  private PetOwnerId(UUID id) {
-    this.value = id;
+  public static PetOwnerId create(String value) {
+    return new PetOwnerId(value);
   }
 
-  public static PetOwnerId create() {
-    return new PetOwnerId();
-  }
-
-  public static PetOwnerId create(UUID id) {
-    return new PetOwnerId(id);
-  }
-
-  public UUID value() {
+  public String value() {
     return value;
   }
 
@@ -42,10 +33,5 @@ public class PetOwnerId {
   @Override
   public int hashCode() {
     return Objects.hash(value);
-  }
-
-  @Override
-  public String toString() {
-    return value.toString();
   }
 }

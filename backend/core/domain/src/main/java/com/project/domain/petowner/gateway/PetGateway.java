@@ -8,5 +8,5 @@ public interface PetGateway {
 
   UUID save(PetSnapshot snapshot);
 
-  Collection<PetSnapshot> findAllFrom(UUID value);
+  Collection<PetSnapshot> findAllFrom(String value);
 }

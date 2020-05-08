@@ -19,6 +19,6 @@ public class LoadPetOwnerUsecase implements LoadPetOwner {
   @Override
   public PetOwner findBy(PetOwnerId id) {
     return petOwnerGateway.findBy(id).map(PetOwner::fromSnapshot)
-        .orElseThrow(PetOwnerNotFound::new);
+        .orElseThrow(() -> new PetOwnerNotFound(id.value()));
   }
 }
