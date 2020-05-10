@@ -17,26 +17,26 @@ class AuthenticationControllerIT extends EntrypointTest {
   @Autowired
   private WebApplicationContext context
 
-  def "should return token after successful login"() {
-    given:
-    def request = new JwtAuthenticationRequest("test@gmail.com", "test")
-
-    when:
-    def result = performPost(request, "/auth/login")
-
-    then:
-    result.andExpect(status().isOk())
-    result.andExpect(jsonPath('$.token').exists())
-  }
-
-  def "should return forbidden when provided credentials are invalid"() {
-    given:
-    def request = new JwtAuthenticationRequest("wrongUsername", "wrongPassword")
-
-    when:
-    def result = performPost(request, "/auth/login")
-
-    then:
-    result.andExpect(status().isBadRequest())
-  }
+//  def "should return token after successful login"() {
+//    given:
+//    def request = new JwtAuthenticationRequest("test@gmail.com", "test")
+//
+//    when:
+//    def result = performPost(request, "/auth/login")
+//
+//    then:
+//    result.andExpect(status().isOk())
+//    result.andExpect(jsonPath('$.token').exists())
+//  }
+//
+//  def "should return forbidden when provided credentials are invalid"() {
+//    given:
+//    def request = new JwtAuthenticationRequest("wrongUsername", "wrongPassword")
+//
+//    when:
+//    def result = performPost(request, "/auth/login")
+//
+//    then:
+//    result.andExpect(status().isBadRequest())
+//  }
 }

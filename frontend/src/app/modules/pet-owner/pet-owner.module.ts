@@ -16,6 +16,7 @@ import {PetCardComponent} from './pets-dashboard/pet-card/pet-card.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AddPetModalComponent} from './pets-dashboard/add-pet-modal/add-pet-modal.component';
 import {PetVisitHistoryComponent} from "./pets-dashboard/pet-visit-history/pet-visit-history.component";
+import {EnumFilterPipe} from "../../commons/enum.filter.pipe";
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import {PetVisitHistoryComponent} from "./pets-dashboard/pet-visit-history/pet-v
   ],
   declarations: [BookVisitComponent, BookVisitCalendarComponent, VisitCalendarColumnComponent,
     VisitReservationModalComponent, VisitCalendarColumnDateComponent, PetsDashboardComponent,
-    VisitsDashboardComponent, PetCardComponent, AddPetModalComponent, PetVisitHistoryComponent],
+    VisitsDashboardComponent, PetCardComponent, AddPetModalComponent, PetVisitHistoryComponent,
+    EnumFilterPipe],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],

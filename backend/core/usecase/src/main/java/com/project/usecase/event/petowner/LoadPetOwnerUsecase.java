@@ -10,15 +10,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoadPetOwnerUsecase implements LoadPetOwner {
 
-  private final PetOwnerGateway petOwnerGateway;
+  private final PetOwnerGateway gateway;
 
-  public LoadPetOwnerUsecase(PetOwnerGateway petOwnerGateway) {
-    this.petOwnerGateway = petOwnerGateway;
+  public LoadPetOwnerUsecase(PetOwnerGateway gateway) {
+    this.gateway = gateway;
   }
 
   @Override
   public PetOwner findBy(PetOwnerId id) {
-    return petOwnerGateway.findBy(id).map(PetOwner::fromSnapshot)
-        .orElseThrow(() -> new PetOwnerNotFound(id.value()));
+    return gateway.findBy(id).orElseThrow(() -> new PetOwnerNotFound(id.value()));
   }
 }

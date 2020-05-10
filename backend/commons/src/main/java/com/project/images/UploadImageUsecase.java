@@ -26,15 +26,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class UploadImageUsecase {
 
-  @Value("${attachments.path}")
+  @Value("${images.path}")
   private String filesPathUri;
-  @Value("${attachments.types.allowed}")
+  @Value("${images.types.allowed}")
   private Set<String> allowedMimeTypes;
 
   @PostConstruct
   public void createDirectory() {
     try {
-      Files.createDirectories(Paths.get("lovet-images"));
+      Files.createDirectories(Paths.get(filesPathUri));
     } catch (IOException e) {
       throw new ImageSaveFailed(E_DEFAULT, "Error during creating images base directory");
     }
@@ -42,11 +42,11 @@ public class UploadImageUsecase {
 
   public String upload(String base64Image, String path) {
     validateMimeType(base64Image);
-    byte[] decodedImg = Base64.getDecoder().decode(base64Image.getBytes(StandardCharsets.UTF_8));
+    byte[] decodedImg = Base64.getDecoder().decode(base64Image.split(",")[1].getBytes(StandardCharsets.UTF_8));
     validateImageSize(decodedImg);
 
     String imageName = UUID.randomUUID().toString();
-    Path destinationFile = Paths.get(filesPathUri + path, imageName);
+    Path destinationFile = Paths.get(filesPathUri + path, imageName + ".png");
     try {
       Files.write(destinationFile, decodedImg, StandardOpenOption.CREATE);
     } catch (IOException e) {

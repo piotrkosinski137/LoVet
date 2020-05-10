@@ -1,4 +1,8 @@
 export class Pet {
-  constructor(public id: string, public name: string, public dateOfBirth: Date, public imageFile?: File) {
+  constructor(public id: string,
+              public name: string,
+              public type: string,
+              public dateOfBirth: Date,
+              public photoUrl?: string) {
   }
 }

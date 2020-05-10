@@ -8,5 +8,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PetSnapshotRepository extends JpaRepository<PetSnapshot, UUID> {
-    Collection<PetSnapshot> findByPetOwnerId(String petOwnerId);
 }

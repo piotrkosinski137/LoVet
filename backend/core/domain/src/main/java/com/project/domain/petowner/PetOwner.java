@@ -2,6 +2,7 @@ package com.project.domain.petowner;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class PetOwner {
 
@@ -19,14 +20,27 @@ public class PetOwner {
     this.phoneNumber = phoneNumber;
   }
 
+  public PetOwner(PetOwnerId id, String name, String surname, String phoneNumber, Set<PetId> pets) {
+    this(id, name, surname, phoneNumber);
+    this.pets.addAll(pets);
+  }
+
   public PetOwnerSnapshot toSnapshot() {
-    return null;
+    return new PetOwnerSnapshot(id.value(), name, surname, phoneNumber,
+        pets.stream().map(PetId::value).collect(Collectors.toSet()));
   }
 
   public static PetOwner fromSnapshot(PetOwnerSnapshot snapshot) {
-    return null;
+    return new PetOwner(PetOwnerId.create(snapshot.getId()), snapshot.getName(),
+        snapshot.getSurname(), snapshot.getPhoneNumber(),
+        snapshot.getPets().stream().map(PetId::create).collect(Collectors.toSet()));
   }
 
   public void addPet(PetId petId) {
+    pets.add(petId);
+  }
+
+  public void removePet(PetId petId) {
+    pets.remove(petId);
   }
 }

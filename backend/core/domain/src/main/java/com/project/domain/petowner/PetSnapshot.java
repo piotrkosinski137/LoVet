@@ -1,36 +1,40 @@
 package com.project.domain.petowner;
 
+import java.time.LocalDate;
 import java.util.UUID;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "PET")
 public class PetSnapshot {
 
   @Id
   private UUID id;
-  private String petOwnerId;
   private String name;
   private String type;
   private String photoUrl;
+  private LocalDate dateOfBirth;
 
   private PetSnapshot() {
   }
 
-  public PetSnapshot(UUID id, String petOwnerId, String name, String type, String photoUrl) {
+  public PetSnapshot(UUID id, String name, String type, String photoUrl, LocalDate dateOfBirth) {
+    this(name, type, photoUrl, dateOfBirth);
     this.id = id;
-    this.petOwnerId = petOwnerId;
+  }
+
+  public PetSnapshot(String name, String type, String photoUrl, LocalDate dateOfBirth) {
     this.name = name;
     this.type = type;
     this.photoUrl = photoUrl;
+    this.dateOfBirth = dateOfBirth;
   }
 
   public UUID getId() {
     return id;
-  }
-
-  public String getPetOwnerId() {
-    return petOwnerId;
   }
 
   public String getName() {
@@ -43,5 +47,9 @@ public class PetSnapshot {
 
   public String getPhotoUrl() {
     return photoUrl;
+  }
+
+  public LocalDate getDateOfBirth() {
+    return dateOfBirth;
   }
 }

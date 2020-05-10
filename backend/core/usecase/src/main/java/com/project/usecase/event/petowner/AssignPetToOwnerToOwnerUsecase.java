@@ -20,7 +20,7 @@ public class AssignPetToOwnerToOwnerUsecase implements AssignPetToOwner {
 
   @Override
   public void assign(PetId petId, PetOwnerId petOwnerId) {
-    Optional<PetOwner> petOwner = petOwnerGateway.findBy(petOwnerId).map(PetOwner::fromSnapshot);
+    Optional<PetOwner> petOwner = petOwnerGateway.findBy(petOwnerId);
     if (petOwner.isPresent()) {
       petOwner.get().addPet(petId);
       petOwnerGateway.save(petOwner.get().toSnapshot());

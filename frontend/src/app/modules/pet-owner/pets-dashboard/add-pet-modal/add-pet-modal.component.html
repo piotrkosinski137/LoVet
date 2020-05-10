@@ -6,31 +6,23 @@
   </div>
   <div class="row">
     <mat-form-field class="input">
-      <mat-label>Pet Type</mat-label>
-      <mat-select>
-        <mat-option value="Bunny">
-          Bunny
-        </mat-option>
-        <mat-option value="Dog">
-          Dog
-        </mat-option>
-        <mat-option value="Cat">
-          Cat
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <div class="row">
-    <mat-form-field class="input">
       <mat-label>Choose a date</mat-label>
-      <input formControlName="yearOfBirth" matInput [matDatepicker]="picker">
+      <input formControlName="dateOfBirth" matInput [matDatepicker]="picker">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
   </div>
   <div class="row">
+    <mat-form-field class="input">
+      <mat-label>Pet Type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let type of petTypes | keyvalue | enumDigitsFilter" [value]="type.value">{{type.value}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="row">
     <input #imageInput hidden="true" type="file" onclick="this.value=null"
-           (change)="imageInputChange(imageInput)" accept="image/*"/>
+           (change)="imageInputChange($event)" accept="image/*"/>
     <button class="input" mat-button color="accent" (click)="imageInput.click()">
       <mat-icon>file_upload</mat-icon>
       Upload image

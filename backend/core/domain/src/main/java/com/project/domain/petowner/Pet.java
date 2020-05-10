@@ -1,44 +1,48 @@
 package com.project.domain.petowner;
 
+import java.time.LocalDate;
+import java.util.UUID;
+
 public class Pet {
 
   private PetId id;
-  private PetOwnerId petOwnerId;
   private String name;
+  private LocalDate dateOfBirth;
   private PetType type;
   private String photoUrl;
 
-  public Pet(String name, PetOwnerId petOwnerId, PetType type, String photoUrl) {
+  public Pet(String name, PetType type, String photoUrl, LocalDate dateOfBirth) {
     this.id = PetId.create();
     this.name = name;
-    this.petOwnerId = petOwnerId;
     this.type = type;
     this.photoUrl = photoUrl;
+    this.dateOfBirth = dateOfBirth;
   }
 
-  public Pet(PetId id, PetOwnerId petOwnerId, String name, PetType type, String photoUrl) {
+  public Pet(PetId id, String name, PetType type, String photoUrl, LocalDate dateOfBirth) {
     this.id = id;
     this.name = name;
-    this.petOwnerId = petOwnerId;
     this.type = type;
     this.photoUrl = photoUrl;
+    this.dateOfBirth = dateOfBirth;
   }
 
   public static Pet fromSnapshot(PetSnapshot snapshot) {
-    return new Pet(PetId.create(snapshot.getId()), PetOwnerId.create(snapshot.getPetOwnerId()),
-        snapshot.getName(), PetType.valueOf(snapshot.getType()), snapshot.getPhotoUrl());
+    return new Pet(PetId.create(snapshot.getId()),
+        snapshot.getName(), PetType.valueOf(snapshot.getType()), snapshot.getPhotoUrl(),
+        snapshot.getDateOfBirth());
   }
 
   public PetSnapshot toSnapshot() {
-    return new PetSnapshot(id.value(),petOwnerId.value(), name, type.name(), photoUrl);
+    if (id == null) {
+      return new PetSnapshot(UUID.randomUUID(), name, type.name(), photoUrl, dateOfBirth);
+    } else {
+      return new PetSnapshot(id.value(), name, type.name(), photoUrl, dateOfBirth);
+    }
   }
 
   public PetId getId() {
     return id;
-  }
-
-  public PetOwnerId getPetOwnerId() {
-    return petOwnerId;
   }
 
   public String getName() {

@@ -2,7 +2,6 @@ package com.project.gateway.petowner;
 
 import com.project.domain.petowner.PetSnapshot;
 import com.project.domain.petowner.gateway.PetGateway;
-import java.util.Collection;
 import java.util.UUID;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +20,7 @@ public class DbPetGateway implements PetGateway {
   }
 
   @Override
-  public Collection<PetSnapshot> findAllFrom(String petOwnerId) {
-    return petSnapshotRepository.findByPetOwnerId(petOwnerId);
+  public void remove(UUID petId) {
+    petSnapshotRepository.deleteById(petId);
   }
 }

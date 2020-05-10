@@ -21,8 +21,8 @@ public class SavePetUsecase implements SavePet {
   }
 
   @Override
-  public void save(Pet pet) {
+  public void save(Pet pet, PetOwnerId petOwnerId) {
     UUID petId = petGateway.save(pet.toSnapshot());
-    publisher.publishEvent(new PetCreated(this, petId, pet.getPetOwnerId().value()));
+    publisher.publishEvent(new PetCreated(this, petId, petOwnerId.value()));
   }
 }
