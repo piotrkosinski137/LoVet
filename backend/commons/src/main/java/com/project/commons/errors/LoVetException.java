@@ -1,4 +1,4 @@
-package com.project.errors;
+package com.project.commons.errors;
 
 public class LoVetException extends RuntimeException {
 

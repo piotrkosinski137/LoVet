@@ -1,6 +1,6 @@
 package com.project.auth.controller;
 
-import static com.project.errors.SuccessCode.S_AUTH_01;
+import static com.project.commons.errors.SuccessCode.S_AUTH_01;
 
 import com.project.auth.controller.dto.JwtAuthenticationRequest;
 import com.project.auth.controller.dto.JwtAuthenticationResponse;
@@ -11,7 +11,6 @@ import com.project.auth.domain.usecase.LoadBaseEntity;
 import com.project.auth.jwt.JwtUtils;
 import com.project.auth.usecase.RegisterPetOwner;
 import com.project.auth.usecase.exceptions.InvalidCredentials;
-import com.project.errors.SuccessCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;

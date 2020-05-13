@@ -1,4 +1,4 @@
-package com.project.errors;
+package com.project.commons.errors;
 
 public enum ErrorCode {
   E_DEFAULT("Something went wrong"),

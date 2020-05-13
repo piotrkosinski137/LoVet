@@ -1,8 +1,8 @@
 package com.project.config;
 
-import static com.project.errors.ErrorCode.E_DEFAULT;
+import static com.project.commons.errors.ErrorCode.E_DEFAULT;
 
-import com.project.errors.LoVetException;
+import com.project.commons.errors.LoVetException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;

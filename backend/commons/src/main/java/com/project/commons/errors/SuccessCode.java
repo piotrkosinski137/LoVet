@@ -1,4 +1,4 @@
-package com.project.errors;
+package com.project.commons.errors;
 
 public enum SuccessCode {
   S_AUTH_01("Register success");

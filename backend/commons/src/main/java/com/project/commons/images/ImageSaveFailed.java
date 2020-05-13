@@ -1,7 +1,7 @@
-package com.project.images;
+package com.project.commons.images;
 
-import com.project.errors.ErrorCode;
-import com.project.errors.LoVetException;
+import com.project.commons.errors.LoVetException;
+import com.project.commons.errors.ErrorCode;
 
 public class ImageSaveFailed extends LoVetException {
 

@@ -48,6 +48,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
       .and()
       .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
       .authorizeRequests()
+      .antMatchers(HttpMethod.GET, "/lovet-images/**").permitAll()
       .antMatchers(HttpMethod.POST, "/auth/**").permitAll()
       .anyRequest().authenticated();
     http.headers().frameOptions().disable();

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>app</artifactId>
+    <artifactId>backend</artifactId>
     <groupId>com.project</groupId>
     <version>1.0-SNAPSHOT</version>
   </parent>
@@ -19,7 +19,9 @@
       <groupId>javax.annotation</groupId>
       <artifactId>javax.annotation-api</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+    </dependency>
   </dependencies>
-
-
 </project>

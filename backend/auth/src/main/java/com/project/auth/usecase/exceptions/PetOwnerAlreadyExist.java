@@ -1,8 +1,8 @@
 package com.project.auth.usecase.exceptions;
 
-import static com.project.errors.ErrorCode.E_AUTH_03;
+import static com.project.commons.errors.ErrorCode.E_AUTH_03;
 
-import com.project.errors.LoVetException;
+import com.project.commons.errors.LoVetException;
 
 public class PetOwnerAlreadyExist extends LoVetException {
 

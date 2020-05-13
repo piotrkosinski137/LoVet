@@ -11,13 +11,17 @@ import {PetService} from "../../../api/pet.service";
 })
 export class PetsDashboardComponent implements OnInit {
 
-  pets: Pet[] = []
+  pets: Pet[] = [];
 
   constructor(private dialog: MatDialog, private petService: PetService) {
   }
 
   ngOnInit() {
-    this.petService.loadFromLoggedIn();
+    this.loadPets();
+  }
+
+  loadPets() {
+    this.petService.loadFromLoggedIn().subscribe(result => this.pets = result);
   }
 
   onAddPetClick() {
@@ -25,7 +29,7 @@ export class PetsDashboardComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result.isSubmitted) {
-        this.petService.save(result.pet);
+        this.petService.save(result.pet).subscribe(() => this.loadPets());
       }
     });
   }

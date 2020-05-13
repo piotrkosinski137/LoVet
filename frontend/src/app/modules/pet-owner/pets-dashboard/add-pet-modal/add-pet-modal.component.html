@@ -29,7 +29,8 @@
     </button>
   </div>
   <div class="row action-buttons">
-    <button class="button" mat-button mat-raised-button [mat-dialog-close]="onModalClose(true)" color="success">
+    <button class="button" mat-button mat-raised-button [mat-dialog-close]="onModalClose(true)" color="success"
+    [disabled]="addPetForm.invalid">
       Create
     </button>
     <button class="button" mat-button mat-raised-button [mat-dialog-close]="onModalClose(false)">Cancel</button>

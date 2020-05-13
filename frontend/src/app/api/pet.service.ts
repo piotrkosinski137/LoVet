@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Pet} from "../modules/pet-owner/model/pet";
 import {SavePet} from "../modules/pet-owner/model/save-pet";
 import {environment} from "../../environments/environment";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,11 @@ export class PetService {
 
   constructor(private http: HttpClient) { }
 
-  save(pet: SavePet) {
-    this.http.post(this.BASE_URL + '/pets', pet).subscribe();
+  save(pet: SavePet): Observable<any> {
+    return this.http.post(this.BASE_URL + '/pets', pet);
   }
 
-  loadFromLoggedIn() {
-    this.http.get(this.BASE_URL + '/pets/overview/current').subscribe(result => console.log(result))
+  loadFromLoggedIn(): Observable<Pet[]> {
+    return this.http.get<Pet[]>(this.BASE_URL + '/pets/overview/current');
   }
 }

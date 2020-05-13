@@ -1,8 +1,8 @@
 package com.project.usecase.event.petowner.exception;
 
-import static com.project.errors.ErrorCode.E_PET_OWNER_01;
+import static com.project.commons.errors.ErrorCode.E_PET_OWNER_01;
 
-import com.project.errors.LoVetException;
+import com.project.commons.errors.LoVetException;
 
 public class PetOwnerNotFound extends LoVetException {
 

@@ -1,11 +1,10 @@
 package com.project.web;
 
 import com.project.domain.petowner.PetId;
-import com.project.domain.petowner.PetOwner;
 import com.project.domain.petowner.PetOwnerId;
 import com.project.domain.petowner.usecase.RemovePet;
 import com.project.domain.petowner.usecase.SavePet;
-import com.project.images.UploadImageUsecase;
+import com.project.commons.images.UploadImageUsecase;
 import com.project.web.dto.PetCommandDto;
 import com.project.web.mapper.PetMapper;
 import java.security.Principal;
@@ -36,7 +35,7 @@ public class PetCommandController {
   @PostMapping
   public void save(@RequestBody PetCommandDto dto, Principal principal) {
     savePet.save(mapper.toPet(dto, uploadImageUsecase.upload(dto.getBase64Image(),
-            "/pets/")), PetOwnerId.create(principal.getName()));
+            "pets/")), PetOwnerId.create(principal.getName()));
   }
 
   @DeleteMapping

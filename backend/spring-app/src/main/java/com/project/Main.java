@@ -8,7 +8,11 @@ import java.util.HashSet;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 @SpringBootApplication
 public class Main implements CommandLineRunner {
@@ -34,5 +38,12 @@ public class Main implements CommandLineRunner {
 //        saveBaseEntity.save(new BaseEntity("test@gmail.com", passwordEncoder.encode("test")));
 //        petOwnerSnapshotRepository.save(new PetOwnerSnapshot("test@gmail.com", "Piotr", "Kosinski",
 //            "555444333", new HashSet<>()));
+    }
+
+    @EventListener
+    public void handleContextRefresh(ContextRefreshedEvent event) {
+        ApplicationContext applicationContext = event.getApplicationContext();
+        applicationContext.getBean(RequestMappingHandlerMapping.class)
+            .getHandlerMethods().forEach((key, value) -> System.out.println(key + " " + value));
     }
 }

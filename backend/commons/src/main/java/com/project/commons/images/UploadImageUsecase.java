@@ -1,10 +1,10 @@
-package com.project.images;
+package com.project.commons.images;
 
-import static com.project.errors.ErrorCode.E_DEFAULT;
-import static com.project.errors.ErrorCode.E_GENERAL_01;
-import static com.project.errors.ErrorCode.E_GENERAL_02;
-import static com.project.errors.ErrorCode.E_GENERAL_03;
-import static com.project.errors.ErrorCode.E_GENERAL_04;
+import static com.project.commons.errors.ErrorCode.E_DEFAULT;
+import static com.project.commons.errors.ErrorCode.E_GENERAL_01;
+import static com.project.commons.errors.ErrorCode.E_GENERAL_02;
+import static com.project.commons.errors.ErrorCode.E_GENERAL_03;
+import static com.project.commons.errors.ErrorCode.E_GENERAL_04;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,8 +41,13 @@ public class UploadImageUsecase {
   }
 
   public String upload(String base64Image, String path) {
+    if (base64Image == null) {
+      return null;
+    }
+
     validateMimeType(base64Image);
-    byte[] decodedImg = Base64.getDecoder().decode(base64Image.split(",")[1].getBytes(StandardCharsets.UTF_8));
+    byte[] decodedImg = Base64.getDecoder()
+        .decode(base64Image.split(",")[1].getBytes(StandardCharsets.UTF_8));
     validateImageSize(decodedImg);
 
     String imageName = UUID.randomUUID().toString();
@@ -52,13 +57,13 @@ public class UploadImageUsecase {
     } catch (IOException e) {
       throw new ImageSaveFailed(E_GENERAL_03);
     }
-    return path + imageName;
+    return path + imageName + ".png";
   }
 
   public Resource downloadImage(String imagePath) throws MalformedURLException {
     File localFile = new File(filesPathUri + imagePath);
     if (!localFile.exists()) {
-      throw new ImageSaveFailed(E_GENERAL_04);
+      throw new ImageReadFailed(E_GENERAL_04);
     }
     return new UrlResource("file", localFile.getPath());
   }
