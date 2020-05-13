@@ -1,4 +1,4 @@
-package com.project.domain.petowner;
+package com.project.domain.doctor;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -8,36 +8,42 @@ import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="PET_OWNER")
-public class PetOwnerSnapshot {
+@Table(name = "DOCTOR")
+public class DoctorSnapshot {
 
   @Id
   private String id;
   private String name;
   private String surname;
   private String phoneNumber;
+  @Enumerated(EnumType.STRING)
+  private Speciality speciality;
   @ElementCollection
   @CollectionTable(
-      name="PET_OWNER_PET",
-      joinColumns=@JoinColumn(name="PET_OWNER_ID")
+      name="DOCTOR_VISIT",
+      joinColumns=@JoinColumn(name="DOCTOR_ID")
   )
-  @Column(name="PET_ID")
-  private Set<UUID> pets = new HashSet<>();
+  @Column(name="VISIT_ID")
+  private Set<UUID> visits = new HashSet<>();
 
-  private PetOwnerSnapshot() {
+  private DoctorSnapshot() {
   }
 
-  public PetOwnerSnapshot(String id, String name, String surname, String phoneNumber, Set<UUID> pets) {
+  public DoctorSnapshot(String id, String name, String surname, String phoneNumber,
+      Speciality speciality,Set<UUID> visits) {
     this.id = id;
     this.name = name;
     this.surname = surname;
     this.phoneNumber = phoneNumber;
-    this.pets = pets;
+    this.visits = visits;
+    this.speciality = speciality;
   }
 
   public String getId() {
@@ -56,7 +62,11 @@ public class PetOwnerSnapshot {
     return phoneNumber;
   }
 
-  public Set<UUID> getPets() {
-    return Collections.unmodifiableSet(pets);
+  public Speciality getSpeciality() {
+    return speciality;
+  }
+
+  public Set<UUID> getVisits() {
+    return Collections.unmodifiableSet(visits);
   }
 }

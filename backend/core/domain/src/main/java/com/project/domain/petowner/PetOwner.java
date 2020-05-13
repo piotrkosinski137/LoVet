@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class PetOwner {
 
-  private PetOwnerId id;
+  private final PetOwnerId id;
   private final String name;
   private final String surname;
   private final String phoneNumber;

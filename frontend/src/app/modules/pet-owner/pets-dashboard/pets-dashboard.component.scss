@@ -1,9 +1,12 @@
-.add-button {
-  display: flex;
-  align-items: center;
+.add-button-container {
+  margin-left: 10px;
+  .add-button {
+    display: flex;
+    align-items: center;
 
-  .button-add-text {
-    margin: 3px 5px;
+    .button-add-text {
+      margin: 3px 5px;
+    }
   }
 }
 

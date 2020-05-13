@@ -16,7 +16,9 @@ public enum ErrorCode {
   E_PET_OWNER_01("Pet owner doesn't exist"),
 
 
-  E_PET_01("Pet doesn't exist");
+  E_PET_01("Pet doesn't exist"),
+
+  E_DOCTOR_01("Doctor doesn't exist");
 
   private String details;
 
