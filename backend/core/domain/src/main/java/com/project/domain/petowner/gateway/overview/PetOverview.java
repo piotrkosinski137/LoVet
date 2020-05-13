@@ -1,11 +1,13 @@
 package com.project.domain.petowner.gateway.overview;
 
+import java.util.Objects;
 import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
 public class PetOverview {
+
   @Id
   private UUID id;
   private String petOwnerId;
@@ -31,5 +33,22 @@ public class PetOverview {
 
   public String getPhotoUrl() {
     return photoUrl;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    PetOverview that = (PetOverview) o;
+    return id.equals(that.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id);
   }
 }

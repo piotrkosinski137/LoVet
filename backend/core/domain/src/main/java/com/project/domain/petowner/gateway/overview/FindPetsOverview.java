@@ -1,13 +1,12 @@
 package com.project.domain.petowner.gateway.overview;
 
-import com.project.domain.petowner.PetId;
 import com.project.domain.petowner.PetOwnerId;
 import java.util.Collection;
-import java.util.Optional;
+import java.util.UUID;
 
-public interface LoadPetsOverview {
+public interface FindPetsOverview {
 
   Collection<PetOverview> findAllFrom(PetOwnerId petOwnerId);
 
-  PetOverview findBy(PetId petId);
+  PetOverview findBy(UUID petId);
 }

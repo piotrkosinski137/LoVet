@@ -12,13 +12,13 @@ public enum ErrorCode {
   E_AUTH_02("Invalid Email syntax"),
   E_AUTH_03("Account with given email already exist"),
 
-
   E_PET_OWNER_01("Pet owner doesn't exist"),
-
 
   E_PET_01("Pet doesn't exist"),
 
-  E_DOCTOR_01("Doctor doesn't exist");
+  E_DOCTOR_01("Doctor doesn't exist"),
+
+  E_VISIT_01("Visit doesn't exist");
 
   private String details;
 

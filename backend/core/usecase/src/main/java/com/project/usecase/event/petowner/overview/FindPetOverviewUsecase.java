@@ -1,20 +1,20 @@
 package com.project.usecase.event.petowner.overview;
 
-import com.project.domain.petowner.PetId;
 import com.project.domain.petowner.PetOwnerId;
-import com.project.domain.petowner.gateway.overview.LoadPetsOverview;
+import com.project.domain.petowner.gateway.overview.FindPetsOverview;
 import com.project.domain.petowner.gateway.overview.PetOverview;
 import com.project.domain.petowner.gateway.overview.PetOverviewGateway;
 import com.project.usecase.event.petowner.exception.PetNotFound;
 import java.util.Collection;
+import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LoadPetOverviewUsecase implements LoadPetsOverview {
+public class FindPetOverviewUsecase implements FindPetsOverview {
 
   private final PetOverviewGateway gateway;
 
-  public LoadPetOverviewUsecase(PetOverviewGateway gateway) {
+  public FindPetOverviewUsecase(PetOverviewGateway gateway) {
     this.gateway = gateway;
   }
 
@@ -24,8 +24,8 @@ public class LoadPetOverviewUsecase implements LoadPetsOverview {
   }
 
   @Override
-  public PetOverview findBy(PetId petId) {
-    return gateway.findBy(petId.value())
-        .orElseThrow(() -> new PetNotFound(petId.value()));
+  public PetOverview findBy(UUID petId) {
+    return gateway.findBy(petId)
+        .orElseThrow(() -> new PetNotFound(petId));
   }
 }

@@ -1,6 +1,7 @@
 package com.project.domain.petowner;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -42,5 +43,22 @@ public class PetOwner {
 
   public void removePet(PetId petId) {
     pets.remove(petId);
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    PetOwner petOwner = (PetOwner) o;
+    return id.equals(petOwner.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id);
   }
 }

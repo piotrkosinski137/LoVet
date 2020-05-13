@@ -1,9 +1,8 @@
 package com.project.web;
 
-import com.project.domain.petowner.PetId;
 import com.project.domain.petowner.PetOwnerId;
 import com.project.domain.petowner.gateway.overview.PetOverview;
-import com.project.usecase.event.petowner.overview.LoadPetOverviewUsecase;
+import com.project.usecase.event.petowner.overview.FindPetOverviewUsecase;
 import java.security.Principal;
 import java.util.Collection;
 import java.util.UUID;
@@ -16,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/pets/overview")
 public class PetQueryController {
 
-  private final LoadPetOverviewUsecase loadPetOverviewUsecase;
+  private final FindPetOverviewUsecase loadPetOverviewUsecase;
 
-  public PetQueryController(LoadPetOverviewUsecase loadPetOverviewUsecase) {
+  public PetQueryController(FindPetOverviewUsecase loadPetOverviewUsecase) {
     this.loadPetOverviewUsecase = loadPetOverviewUsecase;
   }
 
@@ -29,6 +28,6 @@ public class PetQueryController {
 
   @GetMapping("/{petId}")
   public PetOverview findBy(@PathVariable String petId) {
-    return loadPetOverviewUsecase.findBy(PetId.create(UUID.fromString(petId)));
+    return loadPetOverviewUsecase.findBy(UUID.fromString(petId));
   }
 }

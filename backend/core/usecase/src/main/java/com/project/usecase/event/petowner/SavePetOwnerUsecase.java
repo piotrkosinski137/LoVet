@@ -1,11 +1,8 @@
 package com.project.usecase.event.petowner;
 
 import com.project.domain.petowner.PetOwner;
-import com.project.domain.petowner.PetOwnerId;
 import com.project.domain.petowner.gateway.PetOwnerGateway;
-import com.project.domain.petowner.usecase.LoadPetOwner;
 import com.project.domain.petowner.usecase.SavePetOwner;
-import com.project.usecase.event.petowner.exception.PetOwnerNotFound;
 import org.springframework.stereotype.Service;
 
 @Service

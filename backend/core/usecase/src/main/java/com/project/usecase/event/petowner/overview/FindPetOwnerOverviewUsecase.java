@@ -1,18 +1,18 @@
 package com.project.usecase.event.petowner.overview;
 
 import com.project.domain.petowner.PetOwnerId;
-import com.project.domain.petowner.gateway.overview.LoadPetOwnerOverview;
+import com.project.domain.petowner.gateway.overview.FindPetOwnerOverview;
 import com.project.domain.petowner.gateway.overview.PetOwnerOverview;
 import com.project.domain.petowner.gateway.overview.PetOwnerOverviewGateway;
 import com.project.usecase.event.petowner.exception.PetOwnerNotFound;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LoadPetOwnerOverviewUsecase implements LoadPetOwnerOverview {
+public class FindPetOwnerOverviewUsecase implements FindPetOwnerOverview {
 
   private final PetOwnerOverviewGateway gateway;
 
-  public LoadPetOwnerOverviewUsecase(PetOwnerOverviewGateway gateway) {
+  public FindPetOwnerOverviewUsecase(PetOwnerOverviewGateway gateway) {
     this.gateway = gateway;
   }
 

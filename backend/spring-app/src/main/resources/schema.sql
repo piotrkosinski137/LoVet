@@ -52,7 +52,8 @@ create table visit
     id binary(16) not null,
     pet_id binary(16) not null,
     doctor_id varchar(255),
-    date DATE,
+    visit_date DATE,
+    description varchar(2048),
     is_booked boolean,
     primary key (id)
 );
@@ -65,7 +66,20 @@ create table doctor_visit
     FOREIGN KEY (visit_id) REFERENCES visit (id)
 );
 
-
+create or replace view visit_overview as
+    select
+           v.id,
+           v.doctor_id,
+           v.pet_id,
+           v.visit_date,
+           v.description,
+           v.is_booked,
+           d.name as doctor_name,
+           d.surname as doctor_surname,
+           p.name as pet_name
+    from visit v
+        left join doctor d on v.doctor_id = d.id
+        left join pet p on v.pet_id = p.id;
 
 create or replace view pet_overview as
 select p.id,

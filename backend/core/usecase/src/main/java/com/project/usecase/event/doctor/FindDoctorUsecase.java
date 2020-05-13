@@ -9,11 +9,11 @@ import com.project.usecase.event.doctor.exception.DoctorNotFound;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LoadDoctorUsecase {
+public class FindDoctorUsecase {
 
   private final DoctorGateway doctorGateway;
 
-  public LoadDoctorUsecase(DoctorGateway doctorGateway) {
+  public FindDoctorUsecase(DoctorGateway doctorGateway) {
     this.doctorGateway = doctorGateway;
   }
 
