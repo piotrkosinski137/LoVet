@@ -24,6 +24,10 @@ public class Doctor {
     this.visits = visits;
   }
 
+  public void addVisits(Set<VisitId> visits) {
+    this.visits.addAll(visits);
+  }
+
   public static Doctor fromSnapshot(DoctorSnapshot snapshot) {
     return new Doctor(DoctorId.create(snapshot.getId()), snapshot.getName(), snapshot.getSurname(),
         snapshot.getPhoneNumber(), snapshot.getSpeciality(), snapshot.getVisits().stream()

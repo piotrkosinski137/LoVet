@@ -4,6 +4,7 @@ import {
   DayWorkingHoursModalComponent,
   WorkingDayType
 } from "./day-working-hours-modal/day-working-hours-modal.component";
+import {VisitService} from "../../../../../../api/visit.service";
 
 @Component({
   selector: 'app-calendar-day',
@@ -17,7 +18,7 @@ export class CalendarDayComponent implements OnInit {
   WorkingDayType = WorkingDayType;
   workingDayType: WorkingDayType = WorkingDayType.NONE;
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog, private visitService: VisitService) {
   }
 
   ngOnInit() {
@@ -30,12 +31,13 @@ export class CalendarDayComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe(workingDayType => {
-      if(workingDayType === undefined) {
+    dialogRef.afterClosed().subscribe(result => {
+      if(result.workingDayType === undefined) {
         this.workingDayType = WorkingDayType.NONE;
       } else {
-        this.workingDayType = workingDayType;
+        this.workingDayType = result.workingDayType;
       }
+      this.visitService.saveBlank(result.selectedHours).subscribe();
     });
   }
 }

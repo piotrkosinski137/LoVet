@@ -35,9 +35,9 @@ public class Main implements CommandLineRunner {
 
     @Override
     public void run(String... args)  {
-//        saveBaseEntity.save(new BaseEntity("test@gmail.com", passwordEncoder.encode("test")));
-//        petOwnerSnapshotRepository.save(new PetOwnerSnapshot("test@gmail.com", "Piotr", "Kosinski",
-//            "555444333", new HashSet<>()));
+        saveBaseEntity.save(new BaseEntity("test@gmail.com", passwordEncoder.encode("test")));
+        petOwnerSnapshotRepository.save(new PetOwnerSnapshot("test@gmail.com", "Piotr", "Kosinski",
+            "555444333", new HashSet<>()));
     }
 
     @EventListener

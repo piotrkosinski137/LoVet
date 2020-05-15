@@ -7,6 +7,4 @@ import java.util.Collection;
 public interface FindDoctor {
 
   Doctor findBy(DoctorId doctorId);
-
-  Collection<Doctor> findAll();
 }

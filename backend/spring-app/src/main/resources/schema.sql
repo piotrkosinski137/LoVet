@@ -17,15 +17,6 @@ create table if not exists pet_owner
     primary key (id)
 );
 
-
-create table if not exists pet_owner_pet
-(
-    pet_owner_id varchar(255),
-    pet_id       binary(16),
-    FOREIGN KEY (pet_owner_id) REFERENCES pet_owner (id),
-    FOREIGN KEY (pet_id) REFERENCES pet (id)
-);
-
 create table if not exists pet
 (
     id            binary(16) not null,
@@ -34,6 +25,14 @@ create table if not exists pet
     type          varchar(255),
     photo_url     varchar(255),
     primary key (id)
+);
+
+create table if not exists pet_owner_pet
+(
+    pet_owner_id varchar(255),
+    pet_id       binary(16),
+    FOREIGN KEY (pet_owner_id) REFERENCES pet_owner (id),
+    FOREIGN KEY (pet_id) REFERENCES pet (id)
 );
 
 create table if not exists doctor
@@ -47,7 +46,7 @@ create table if not exists doctor
 );
 
 
-create table visit
+create table if not exists visit
 (
     id binary(16) not null,
     pet_id binary(16) not null,
@@ -58,7 +57,7 @@ create table visit
     primary key (id)
 );
 
-create table doctor_visit
+create table if not exists doctor_visit
 (
     doctor_id varchar(255),
     visit_id  binary(16),

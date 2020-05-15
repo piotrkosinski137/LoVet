@@ -12,4 +12,11 @@
   <artifactId>registration</artifactId>
   <packaging>pom</packaging>
 
+  <modules>
+    <module>domain</module>
+    <module>usecase</module>
+    <module>gateway</module>
+    <module>web</module>
+  </modules>
+
 </project>

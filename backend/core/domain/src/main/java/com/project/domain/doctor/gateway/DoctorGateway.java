@@ -7,4 +7,6 @@ import java.util.Optional;
 public interface DoctorGateway {
 
   Optional<Doctor> findBy(DoctorId doctorId);
+
+  void save(Doctor doctor);
 }

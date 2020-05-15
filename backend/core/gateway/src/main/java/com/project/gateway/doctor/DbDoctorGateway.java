@@ -19,4 +19,9 @@ public class DbDoctorGateway implements DoctorGateway {
   public Optional<Doctor> findBy(DoctorId doctorId) {
     return doctorRepository.findById(doctorId.value()).map(Doctor::fromSnapshot);
   }
+
+  @Override
+  public void save(Doctor doctor) {
+    doctorRepository.save(doctor.toSnapshot());
+  }
 }

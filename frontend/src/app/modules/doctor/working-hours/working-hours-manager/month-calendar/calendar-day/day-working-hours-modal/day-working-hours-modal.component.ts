@@ -70,7 +70,9 @@ export class DayWorkingHoursModalComponent implements OnInit {
   }
 
   modalSubmitted() {
-    return this.selectWorkingDayType();
+    return {workingDayType: this.selectWorkingDayType(),
+      selectedHours: this.hours.filter(hour => hour.isSelected)
+      .map(hour => hour.hourDate)};
   }
 
   selectWorkingDayType(): WorkingDayType {

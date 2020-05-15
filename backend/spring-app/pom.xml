@@ -31,12 +31,22 @@
     </dependency>
     <dependency>
       <groupId>com.project</groupId>
+      <artifactId>core-usecase</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>com.project</groupId>
       <artifactId>core-web</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.project</groupId>
       <artifactId>registration-gateway</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>com.project</groupId>
+      <artifactId>registration-usecase</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
     <dependency>
