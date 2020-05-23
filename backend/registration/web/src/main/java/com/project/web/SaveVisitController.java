@@ -6,13 +6,14 @@ import com.project.web.dto.BookVisitDto;
 import com.project.web.dto.SaveBlankVisitsDto;
 import com.project.web.dto.VisitMapper;
 import java.security.Principal;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(name = "visits")
+@RequestMapping(value = "/visits")
 public class SaveVisitController {
 
   private final SaveVisit saveVisit;
@@ -23,9 +24,7 @@ public class SaveVisitController {
     this.visitMapper = visitMapper;
   }
 
-  // TODO allow only with role doctor
-
-  //spring doesnt scan those endpoints
+  @Secured("ROLE_DOCTOR")
   @PostMapping("/doctor/new")
   public void saveBlankDoctorVisits(@RequestBody SaveBlankVisitsDto saveBlankVisitsDto,
       Principal principal) {

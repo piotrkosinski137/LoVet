@@ -13,7 +13,6 @@ export class VisitService {
   constructor(private http: HttpClient) { }
 
   saveBlank(visits: Date[]): Observable<any> {
-    console.log(visits)
     return this.http.post(this.BASE_URL + '/visits/doctor/new', {visits});
   }
 }

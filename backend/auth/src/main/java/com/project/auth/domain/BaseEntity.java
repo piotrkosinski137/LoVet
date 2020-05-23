@@ -14,7 +14,7 @@ public class BaseEntity {
   private Credentials credentials;
 
   @Enumerated(EnumType.STRING)
-  private Role role = Role.WORKER;
+  private Role role = Role.PET_OWNER;
 
   public BaseEntity() {
   }
@@ -22,6 +22,12 @@ public class BaseEntity {
   public BaseEntity(String email, String password) {
     this.credentials = Credentials.create(email, password);
     this.id = EntityId.create();
+  }
+
+  public BaseEntity(String email, String password, Role role) {
+    this.credentials = Credentials.create(email, password);
+    this.id = EntityId.create();
+    this.role = role;
   }
 
   public EntityId getId() {

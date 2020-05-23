@@ -19,7 +19,7 @@
     </ng-container>
     <ng-container *ngFor="let date of monthDays">
       <div class="day-container">
-        <app-calendar-day [date]="date"></app-calendar-day>
+        <app-calendar-day [date]="date" [workingHours]="getWorkingHoursBy(date)" (hoursSubmitted)="onHoursSubmitted($event)"></app-calendar-day>
       </div>
     </ng-container>
   </div>

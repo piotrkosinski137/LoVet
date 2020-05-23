@@ -64,8 +64,10 @@ public class Visit {
   }
 
   public VisitSnapshot toSnapshot() {
-    return new VisitSnapshot(id.value(), doctorId.value(), petId.value(), visitDate, description,
-        isBooked);
+    return new VisitSnapshot(id.value(),
+        doctorId != null ? doctorId.value() : null,
+        petId != null ? petId.value() : null,
+        visitDate, description, isBooked);
   }
 
   public void book(DoctorId doctorId, PetId petId, LocalDateTime visitDate) {

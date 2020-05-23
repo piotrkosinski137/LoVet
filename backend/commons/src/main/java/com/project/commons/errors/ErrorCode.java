@@ -11,6 +11,7 @@ public enum ErrorCode {
   E_AUTH_01("Invalid Username or Password"),
   E_AUTH_02("Invalid Email syntax"),
   E_AUTH_03("Account with given email already exist"),
+  E_AUTH_04("You are not authorized to proceed this operation"),
 
   E_PET_OWNER_01("Pet owner doesn't exist"),
 

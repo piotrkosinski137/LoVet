@@ -9,19 +9,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class DbDoctorGateway implements DoctorGateway {
 
-  private final DoctorRepository doctorRepository;
+  private final DoctorSnapshotRepository doctorSnapshotRepository;
 
-  public DbDoctorGateway(DoctorRepository doctorRepository) {
-    this.doctorRepository = doctorRepository;
+  public DbDoctorGateway(DoctorSnapshotRepository doctorSnapshotRepository) {
+    this.doctorSnapshotRepository = doctorSnapshotRepository;
   }
 
   @Override
   public Optional<Doctor> findBy(DoctorId doctorId) {
-    return doctorRepository.findById(doctorId.value()).map(Doctor::fromSnapshot);
+    return doctorSnapshotRepository.findById(doctorId.value()).map(Doctor::fromSnapshot);
   }
 
   @Override
   public void save(Doctor doctor) {
-    doctorRepository.save(doctor.toSnapshot());
+    doctorSnapshotRepository.save(doctor.toSnapshot());
   }
 }

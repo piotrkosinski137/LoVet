@@ -16,8 +16,6 @@ public class BookVisitDto {
   @NotNull
   @NotEmpty
   private UUID petId;
-  @NotNull
-  @NotEmpty
   private LocalDateTime visitDate;
 
   public UUID getVisitId() {

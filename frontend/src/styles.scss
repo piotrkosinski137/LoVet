@@ -4,6 +4,8 @@ html, body {
 
 body {
   background-image: var(--background-gradient);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }

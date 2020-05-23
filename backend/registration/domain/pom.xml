@@ -17,6 +17,4 @@
       <artifactId>javax.persistence-api</artifactId>
     </dependency>
   </dependencies>
-
-
 </project>
