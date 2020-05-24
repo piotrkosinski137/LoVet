@@ -6,6 +6,8 @@
     "E_AUTH_03": "Account with given email already exist",
     "E_AUTH_04": "You are not authorized to proceed this operation",
 
+    "E_DOCTOR_1": "Doctor doesn't exist",
+    "E_DOCTOR_2": "Can't remove working hour because is already booked",
 
     "E_PET_OWNER_01": "Pet owner doesn't exist"
   },

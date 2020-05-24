@@ -6,6 +6,7 @@ import com.project.domain.doctor.VisitId;
 import com.project.domain.doctor.usecase.FindDoctor;
 import com.project.domain.doctor.usecase.SaveDoctor;
 import com.project.event.BlankVisitsCreated;
+import com.project.event.BlankVisitsRemoved;
 import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 import org.springframework.context.event.EventListener;
@@ -30,6 +31,16 @@ public class BlankVisitsCreatedListener {
     doctor.addVisits(event.getVisitIds().stream()
     .map(VisitId::create)
     .collect(Collectors.toSet()));
+    saveDoctor.save(doctor);
+  }
+
+  @EventListener
+  @Transactional
+  public void deleteBlankVisits(BlankVisitsRemoved event) {
+    Doctor doctor = findDoctor.findBy(DoctorId.create(event.getDoctorId()));
+    doctor.deleteVisits(event.getVisitIds().stream()
+        .map(VisitId::create)
+        .collect(Collectors.toSet()));
     saveDoctor.save(doctor);
   }
 }

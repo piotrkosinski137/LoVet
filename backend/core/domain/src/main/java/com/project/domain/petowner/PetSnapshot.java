@@ -6,12 +6,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "PET")
 public class PetSnapshot {
 
   @Id
+  @Type(type="org.hibernate.type.UUIDCharType")
   private UUID id;
   private String name;
   private String type;

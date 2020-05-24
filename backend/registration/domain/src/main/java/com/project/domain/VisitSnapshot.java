@@ -1,5 +1,6 @@
 package com.project.domain;
 
+import org.hibernate.annotations.Type;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.Table;
 public class VisitSnapshot {
 
   @Id
+  @Type(type="org.hibernate.type.UUIDCharType")
   private UUID id;
   private String doctorId;
   private UUID petId;

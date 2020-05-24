@@ -13,6 +13,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "DOCTOR")
@@ -31,6 +32,7 @@ public class DoctorSnapshot {
       joinColumns=@JoinColumn(name="DOCTOR_ID")
   )
   @Column(name="VISIT_ID")
+  @Type(type="org.hibernate.type.UUIDCharType")
   private Set<UUID> visits = new HashSet<>();
 
   private DoctorSnapshot() {

@@ -11,4 +11,9 @@ public class LocalDateMapper {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.MM.yyyy");
     return LocalDate.parse(date, formatter);
   }
+
+  public LocalDate mapFromLocalDateTimeString(String date) {
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.MM.yyyy");
+    return LocalDate.parse(date, formatter);
+  }
 }

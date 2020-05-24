@@ -1,5 +1,6 @@
 package com.project.web;
 
+import com.project.commons.mapper.LocalDateMapper;
 import com.project.domain.DoctorId;
 import com.project.domain.usecase.SaveVisit;
 import com.project.web.dto.BookVisitDto;
@@ -18,18 +19,20 @@ public class SaveVisitController {
 
   private final SaveVisit saveVisit;
   private final VisitMapper visitMapper;
+  private final LocalDateMapper localDateMapper;
 
-  public SaveVisitController(SaveVisit saveVisit, VisitMapper visitMapper) {
+  public SaveVisitController(SaveVisit saveVisit, VisitMapper visitMapper,
+      LocalDateMapper localDateMapper) {
     this.saveVisit = saveVisit;
     this.visitMapper = visitMapper;
+    this.localDateMapper = localDateMapper;
   }
 
   @Secured("ROLE_DOCTOR")
   @PostMapping("/doctor/new")
-  public void saveBlankDoctorVisits(@RequestBody SaveBlankVisitsDto saveBlankVisitsDto,
-      Principal principal) {
-    saveVisit.saveBlankTo(visitMapper.toVisits(saveBlankVisitsDto),
-        DoctorId.create(principal.getName()));
+  public void saveWorkingHoursDay(@RequestBody SaveBlankVisitsDto dto, Principal principal) {
+    saveVisit.saveWorkingHoursDay(visitMapper.toVisits(dto),
+        DoctorId.create(principal.getName()), localDateMapper.mapFromLocalDateTimeString(dto.getDay()));
   }
 
   @PostMapping("/book")

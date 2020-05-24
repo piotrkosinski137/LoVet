@@ -33,8 +33,9 @@ public class Visit {
     this.isBooked = isBooked;
   }
 
-  public void assignDoctor(DoctorId doctorId) {
+  public Visit assignDoctor(DoctorId doctorId) {
     this.doctorId = doctorId;
+    return this;
   }
 
   public VisitId getId() {
@@ -55,6 +56,10 @@ public class Visit {
 
   public String getDescription() {
     return description;
+  }
+
+  public boolean isBooked() {
+    return isBooked;
   }
 
   public static Visit fromSnapshot(VisitSnapshot snapshot) {

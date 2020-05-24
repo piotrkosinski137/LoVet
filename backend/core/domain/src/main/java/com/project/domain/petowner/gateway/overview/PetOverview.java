@@ -4,11 +4,13 @@ import java.util.Objects;
 import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import org.hibernate.annotations.Type;
 
 @Entity
 public class PetOverview {
 
   @Id
+  @Type(type="org.hibernate.type.UUIDCharType")
   private UUID id;
   private String petOwnerId;
   private String name;

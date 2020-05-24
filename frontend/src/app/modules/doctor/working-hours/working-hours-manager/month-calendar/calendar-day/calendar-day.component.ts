@@ -14,7 +14,7 @@ export class CalendarDayComponent implements OnInit {
   @Input()
   workingHours: any[] = [];
   @Output()
-  hoursSubmitted = new EventEmitter<Date[]>()
+  hoursSubmitted = new EventEmitter<WorkingHourDaySubmitted>()
 
   constructor(private dialog: MatDialog) {
   }
@@ -32,8 +32,13 @@ export class CalendarDayComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.hoursSubmitted.emit(result.selectedHours);
+        this.hoursSubmitted.emit(result);
       }
     });
   }
+}
+
+export interface WorkingHourDaySubmitted {
+  selectedHours: Date[],
+  day: Date;
 }

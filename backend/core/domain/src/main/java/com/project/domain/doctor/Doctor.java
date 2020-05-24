@@ -28,6 +28,9 @@ public class Doctor {
     this.visits.addAll(visits);
   }
 
+  public void deleteVisits(Set<VisitId> visits) {
+    this.visits.removeAll(visits);
+  }
   public static Doctor fromSnapshot(DoctorSnapshot snapshot) {
     return new Doctor(DoctorId.create(snapshot.getId()), snapshot.getName(), snapshot.getSurname(),
         snapshot.getPhoneNumber(), snapshot.getSpeciality(), snapshot.getVisits().stream()

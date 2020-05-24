@@ -11,7 +11,6 @@ export class DayWorkingHoursModalComponent implements OnInit {
   hours: WorkHourBooking[] = [];
   date: Date;
 
-
   constructor(@Inject(MAT_DIALOG_DATA) private passedData: any) {
   }
 
@@ -76,7 +75,7 @@ export class DayWorkingHoursModalComponent implements OnInit {
 
   modalSubmitted() {
     return {selectedHours: this.hours.filter(hour => hour.isSelected)
-      .map(hour => hour.hourDate)};
+      .map(hour => hour.hourDate), day: this.date};
   }
 
   // selectWorkingDayType(): WorkingDayType {

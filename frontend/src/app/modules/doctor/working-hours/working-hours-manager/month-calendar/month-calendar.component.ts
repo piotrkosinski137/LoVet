@@ -3,6 +3,7 @@ import {WorkingHoursService} from "../../working-hours.service";
 import {Subscription} from "rxjs";
 import {VisitService} from "../../../../../api/visit.service";
 import {MessageService} from "../../../../../api/commons/message.service";
+import {WorkingHourDaySubmitted} from "./calendar-day/calendar-day.component";
 
 @Component({
   selector: 'app-month-calendar',
@@ -25,14 +26,14 @@ export class MonthCalendarComponent implements OnInit, OnDestroy {
     this.subscription = this.workingHoursService.dateSelected.subscribe(date => {
       this.monthDate = date;
       this.selectWorkingHours();
-
       this.getDaysInMonthUTC();
       this.calculateGapNumbers();
     });
   }
 
   selectWorkingHours() {
-    this.workingHoursService.getWorkingHoursByMonth(this.monthDate).subscribe(dates => this.bookedWorkingHours = dates.workingHours);
+    this.workingHoursService.getWorkingHoursByMonth(this.monthDate)
+    .subscribe(dates => this.bookedWorkingHours = dates.workingHours);
   }
 
   getDaysInMonthUTC() {
@@ -44,11 +45,6 @@ export class MonthCalendarComponent implements OnInit, OnDestroy {
     }
   }
 
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
   private calculateGapNumbers() {
     this.gapNumbers = this.monthDate.getDay() === 0 ? [] : [...Array(this.monthDate.getDay() - 1).keys()];
   }
@@ -58,7 +54,6 @@ export class MonthCalendarComponent implements OnInit, OnDestroy {
   }
 
   getWorkingHoursBy(currentDate: Date) {
-
     return this.bookedWorkingHours.filter(date => {
       {
         return date.year === currentDate.getFullYear() &&
@@ -68,10 +63,14 @@ export class MonthCalendarComponent implements OnInit, OnDestroy {
     });
   }
 
-  onHoursSubmitted(selectedHours: Date[]) {
-    this.visitService.saveBlank(selectedHours).subscribe(() => {
+  onHoursSubmitted(event: WorkingHourDaySubmitted) {
+    this.visitService.saveBlank(event).subscribe(() => {
         this.selectWorkingHours();
       },
       error => this.messageService.error(error.error?.errorCode));
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

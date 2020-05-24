@@ -5,12 +5,13 @@ import java.util.Objects;
 import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.Type;
 
 @Entity
 public class VisitOverview {
 
   @Id
+  @Type(type="org.hibernate.type.UUIDCharType")
   private UUID id;
   private UUID petId;
   private LocalDateTime visitDate;

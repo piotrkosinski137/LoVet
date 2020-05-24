@@ -18,6 +18,7 @@ public enum ErrorCode {
   E_PET_01("Pet doesn't exist"),
 
   E_DOCTOR_01("Doctor doesn't exist"),
+  E_DOCTOR_02("Can't remove working hour because is already booked"),
 
   E_VISIT_01("Visit doesn't exist");
 
