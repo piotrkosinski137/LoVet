@@ -1,5 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {WorkingHour} from "../../month-calendar.component";
 
 @Component({
   selector: 'app-day-working-hours-modal',
@@ -19,7 +20,7 @@ export class DayWorkingHoursModalComponent implements OnInit {
     this.prepareHours(this.passedData.bookedHours);
   }
 
-  prepareHours(bookedHours: any[]) {
+  prepareHours(bookedHours: WorkingHour[]) {
     this.hours = [];
     this.date.setHours(9, 0, 0);
     while (this.date.getHours() <= 18) {
@@ -28,8 +29,11 @@ export class DayWorkingHoursModalComponent implements OnInit {
     }
   }
 
-  isSelected(workingDay: Date, bookedHours: any[]) {
-    return bookedHours.find(date => date.hour === workingDay.getHours() && date.minute == workingDay.getMinutes());
+  isSelected(workingDay: Date, bookedHours: WorkingHour[]) {
+    return bookedHours.some((bookedHour: WorkingHour) => {
+      return bookedHour.visitDate.getHours() === workingDay.getHours()
+        && bookedHour.visitDate.getMinutes() == workingDay.getMinutes()
+    });
   }
 
   minutesPeriodSelected(hourBooking: WorkHourBooking) {

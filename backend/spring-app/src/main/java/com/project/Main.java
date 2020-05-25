@@ -47,7 +47,13 @@ public class Main implements CommandLineRunner {
     saveBaseEntity.save(new BaseEntity("admin@gmail.com", passwordEncoder.encode("test"),
         Role.DOCTOR));
     doctorSnapshotRepository
-        .save(new DoctorSnapshot("admin@gmail.com", "PiotrDoctor", "KosinskiDoctor",
+        .save(new DoctorSnapshot("admin@gmail.com", "Adrianna", "Nowakowska",
+            "555444333", Speciality.DOGS, new HashSet<>()));
+
+    saveBaseEntity.save(new BaseEntity("admin2@gmail.com", passwordEncoder.encode("test"),
+        Role.DOCTOR));
+    doctorSnapshotRepository
+        .save(new DoctorSnapshot("admin2@gmail.com", "Piotr", "Kosinsky",
             "555444333", Speciality.DOGS, new HashSet<>()));
   }
 

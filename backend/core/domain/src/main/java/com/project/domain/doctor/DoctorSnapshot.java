@@ -28,18 +28,18 @@ public class DoctorSnapshot {
   private Speciality speciality;
   @ElementCollection
   @CollectionTable(
-      name="DOCTOR_VISIT",
-      joinColumns=@JoinColumn(name="DOCTOR_ID")
+      name = "DOCTOR_VISIT",
+      joinColumns = @JoinColumn(name = "DOCTOR_ID")
   )
-  @Column(name="VISIT_ID")
-  @Type(type="org.hibernate.type.UUIDCharType")
+  @Column(name = "VISIT_ID")
+  @Type(type = "org.hibernate.type.UUIDCharType")
   private Set<UUID> visits = new HashSet<>();
 
   private DoctorSnapshot() {
   }
 
   public DoctorSnapshot(String id, String name, String surname, String phoneNumber,
-      Speciality speciality,Set<UUID> visits) {
+      Speciality speciality, Set<UUID> visits) {
     this.id = id;
     this.name = name;
     this.surname = surname;

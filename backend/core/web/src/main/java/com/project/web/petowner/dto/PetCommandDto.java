@@ -1,4 +1,4 @@
-package com.project.web.dto;
+package com.project.web.petowner.dto;
 
 public class PetCommandDto {
   private String name;

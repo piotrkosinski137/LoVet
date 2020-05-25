@@ -1,4 +1,4 @@
-package com.project.web;
+package com.project.web.petowner;
 
 import com.project.domain.petowner.PetOwnerId;
 import com.project.domain.petowner.gateway.overview.FindPetOwnerOverview;

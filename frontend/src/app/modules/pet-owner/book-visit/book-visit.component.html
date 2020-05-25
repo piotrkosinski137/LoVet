@@ -1,10 +1,13 @@
 <mat-tab-group>
   <ng-container *ngFor="let doctor of doctors$ | async">
-    <mat-tab [label]="doctor.name">
-      <app-book-visit-calendar [doctors]="[doctor]"></app-book-visit-calendar>
+    <mat-tab [label]="doctor.name + ' ' + doctor.surname">
+      <ng-template matTabContent>
+        <app-book-visit-calendar [doctors]="[doctor]"></app-book-visit-calendar>
+      </ng-template>
     </mat-tab>
   </ng-container>
-  <mat-tab [label]="'All'">
-    <app-book-visit-calendar [doctors]="doctors$ | async"></app-book-visit-calendar>
-  </mat-tab>
+<!--TODO-->
+  <!--  <mat-tab [label]="'All'">-->
+<!--    <app-book-visit-calendar [doctors]="doctors$ | async"></app-book-visit-calendar>-->
+<!--  </mat-tab>-->
 </mat-tab-group>

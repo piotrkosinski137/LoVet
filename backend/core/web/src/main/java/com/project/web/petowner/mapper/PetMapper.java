@@ -1,9 +1,8 @@
-package com.project.web.mapper;
+package com.project.web.petowner.mapper;
 
 import com.project.domain.petowner.Pet;
-import com.project.domain.petowner.PetOwnerId;
 import com.project.domain.petowner.PetType;
-import com.project.web.dto.PetCommandDto;
+import com.project.web.petowner.dto.PetCommandDto;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import org.springframework.stereotype.Component;

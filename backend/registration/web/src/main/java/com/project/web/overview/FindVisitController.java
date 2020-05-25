@@ -2,8 +2,9 @@ package com.project.web.overview;
 
 import com.project.commons.mapper.LocalDateMapper;
 import com.project.domain.gateway.overview.FindVisitOverview;
-import com.project.web.dto.DoctorVisitDatesDto;
+import com.project.domain.gateway.overview.WorkingHoursOverview;
 import java.security.Principal;
+import java.util.Collection;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,8 @@ public class FindVisitController {
 
   @Secured("ROLE_DOCTOR")
   @GetMapping("/doctor")
-  public DoctorVisitDatesDto findDoctorVisitDates(Principal principal, @RequestParam String monthDate) {
-    return new DoctorVisitDatesDto(findVisitOverview.findDoctorVisitDatesBy(principal.getName(), mapper.mapFrom(monthDate)));
+  public Collection<WorkingHoursOverview> findDoctorVisitDates(Principal principal,
+      @RequestParam String monthDate) {
+    return findVisitOverview.findDoctorVisitDatesBy(principal.getName(), mapper.mapFrom(monthDate));
   }
 }

@@ -2,7 +2,7 @@ package com.project.usecase.overview;
 
 import static com.project.commons.errors.ErrorCode.E_VISIT_01;
 
-import com.project.domain.gateway.overview.DoctorVisitDatesOverview;
+import com.project.domain.gateway.overview.WorkingHoursOverview;
 import com.project.domain.gateway.overview.FindVisitOverview;
 import com.project.domain.gateway.overview.VisitOverview;
 import com.project.domain.gateway.overview.VisitOverviewGateway;
@@ -28,7 +28,7 @@ public class FindVisitOverviewUsecase implements FindVisitOverview {
   }
 
   @Override
-  public Collection<DoctorVisitDatesOverview> findDoctorVisitDatesBy(String doctorId, LocalDate month) {
+  public Collection<WorkingHoursOverview> findDoctorVisitDatesBy(String doctorId, LocalDate month) {
     return visitOverviewGateway.findByDoctorIdAndMonth(doctorId, month);
   }
 }

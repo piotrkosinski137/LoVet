@@ -45,6 +45,11 @@ create table if not exists doctor
     primary key (id)
 );
 
+create or replace view doctor_overview as
+select d.id,
+       d.name,
+       d.surname
+from doctor d;
 
 create table if not exists visit
 (

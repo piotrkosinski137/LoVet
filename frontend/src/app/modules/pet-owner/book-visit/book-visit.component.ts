@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DoctorService} from "../../../api/doctor.service";
 import {Observable} from "rxjs";
 import {Doctor} from "../../doctor/model/doctor";
@@ -12,13 +12,10 @@ export class BookVisitComponent implements OnInit {
 
   doctors$: Observable<Doctor[]>;
 
-  constructor(private doctorService: DoctorService) { }
+  constructor(private doctorService: DoctorService) {
+  }
 
   ngOnInit() {
     this.doctors$ = this.doctorService.getDoctors();
-  }
-
-  dummyDoctor() {
-    return new Doctor('elos', []);
   }
 }

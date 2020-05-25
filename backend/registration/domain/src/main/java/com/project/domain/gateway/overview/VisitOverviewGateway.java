@@ -9,5 +9,5 @@ public interface VisitOverviewGateway {
 
   Optional<VisitOverview> findBy(UUID id);
 
-  Collection<DoctorVisitDatesOverview> findByDoctorIdAndMonth(String doctorId, LocalDate date);
+  Collection<WorkingHoursOverview> findByDoctorIdAndMonth(String doctorId, LocalDate date);
 }

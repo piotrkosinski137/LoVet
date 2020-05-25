@@ -16,12 +16,13 @@ export class MonthCalendarComponent implements OnInit, OnDestroy {
   monthDays: Date[] = [];
   gapNumbers: number[];
   subscription: Subscription;
-  bookedWorkingHours: any[] = [];
+  workingHours: WorkingHour[] = [];
 
   constructor(private workingHoursService: WorkingHoursService, private visitService: VisitService,
               private messageService: MessageService) {
   }
 
+  //it doesn't read already assigned workingHours
   ngOnInit() {
     this.subscription = this.workingHoursService.dateSelected.subscribe(date => {
       this.monthDate = date;
@@ -32,8 +33,10 @@ export class MonthCalendarComponent implements OnInit, OnDestroy {
   }
 
   selectWorkingHours() {
-    this.workingHoursService.getWorkingHoursByMonth(this.monthDate)
-    .subscribe(dates => this.bookedWorkingHours = dates.workingHours);
+    this.workingHoursService.getDoctorWorkingHoursByMonth(this.monthDate)
+    .subscribe(workingHours => {
+      this.workingHours = workingHours
+    });
   }
 
   getDaysInMonthUTC() {
@@ -54,11 +57,11 @@ export class MonthCalendarComponent implements OnInit, OnDestroy {
   }
 
   getWorkingHoursBy(currentDate: Date) {
-    return this.bookedWorkingHours.filter(date => {
+    return this.workingHours.filter(workingHour => {
       {
-        return date.year === currentDate.getFullYear() &&
-          date.monthValue === currentDate.getMonth() + 1 &&
-          date.dayOfMonth === currentDate.getDate()
+        return workingHour.visitDate.getFullYear() === currentDate.getFullYear() &&
+          workingHour.visitDate.getMonth() === currentDate.getMonth() &&
+          workingHour.visitDate.getDate() === currentDate.getDate()
       }
     });
   }
@@ -72,5 +75,18 @@ export class MonthCalendarComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+}
+
+export class WorkingHour {
+  constructor(private _visitDate: Date, private _isBooked: boolean) {
+  }
+
+  get visitDate(): Date {
+    return this._visitDate;
+  }
+
+  get isBooked(): boolean {
+    return this._isBooked;
   }
 }

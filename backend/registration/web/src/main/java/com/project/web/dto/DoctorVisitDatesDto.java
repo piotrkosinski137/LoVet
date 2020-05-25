@@ -1,29 +1,23 @@
 package com.project.web.dto;
 
-import com.project.domain.gateway.overview.DoctorVisitDatesOverview;
+import com.project.domain.gateway.overview.WorkingHoursOverview;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class DoctorVisitDatesDto {
-  private Collection<LocalDateTime> workingHours;
+  private Collection<WorkingHoursOverview> workingHours;
 
-  public DoctorVisitDatesDto(Collection<DoctorVisitDatesOverview> visitDates) {
-    this.workingHours = mapToWorkingHours(visitDates);
+  public DoctorVisitDatesDto(Collection<WorkingHoursOverview> workingHours) {
+    this.workingHours = workingHours;
   }
 
-  private Set<LocalDateTime> mapToWorkingHours(Collection<DoctorVisitDatesOverview> visitDates) {
-    return visitDates.stream()
-        .map(DoctorVisitDatesOverview::getVisitDate)
-        .collect(Collectors.toSet());
-  }
-
-  public Collection<LocalDateTime> getWorkingHours() {
+  public Collection<WorkingHoursOverview> getWorkingHours() {
     return workingHours;
   }
 
-  public void setWorkingHours(Collection<LocalDateTime> workingHours) {
+  public void setWorkingHours(Collection<WorkingHoursOverview> workingHours) {
     this.workingHours = workingHours;
   }
 }

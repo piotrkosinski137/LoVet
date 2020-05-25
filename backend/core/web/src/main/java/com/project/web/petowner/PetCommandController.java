@@ -1,12 +1,12 @@
-package com.project.web;
+package com.project.web.petowner;
 
 import com.project.domain.petowner.PetId;
 import com.project.domain.petowner.PetOwnerId;
 import com.project.domain.petowner.usecase.RemovePet;
 import com.project.domain.petowner.usecase.SavePet;
 import com.project.commons.images.UploadImageUsecase;
-import com.project.web.dto.PetCommandDto;
-import com.project.web.mapper.PetMapper;
+import com.project.web.petowner.dto.PetCommandDto;
+import com.project.web.petowner.mapper.PetMapper;
 import java.security.Principal;
 import java.util.UUID;
 import org.springframework.web.bind.annotation.DeleteMapping;

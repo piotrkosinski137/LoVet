@@ -1,6 +1,6 @@
 package com.project.gateway.overview;
 
-import com.project.domain.gateway.overview.DoctorVisitDatesOverview;
+import com.project.domain.gateway.overview.WorkingHoursOverview;
 import com.project.domain.gateway.overview.VisitOverview;
 import com.project.domain.gateway.overview.VisitOverviewGateway;
 import java.time.LocalDate;
@@ -24,7 +24,7 @@ public class DbVisitOverviewGateway implements VisitOverviewGateway {
   }
 
   @Override
-  public Collection<DoctorVisitDatesOverview> findByDoctorIdAndMonth(String doctorId, LocalDate date) {
+  public Collection<WorkingHoursOverview> findByDoctorIdAndMonth(String doctorId, LocalDate date) {
     return repository.findByDoctorAndDate(doctorId, date.getYear(), date.getMonthValue());
   }
 }

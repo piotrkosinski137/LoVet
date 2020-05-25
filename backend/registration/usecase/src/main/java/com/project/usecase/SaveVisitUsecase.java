@@ -36,8 +36,8 @@ public class SaveVisitUsecase implements SaveVisit {
   @Transactional
   public void saveWorkingHoursDay(Collection<Visit> visits, DoctorId doctorId, LocalDate day) {
     Collection<Visit> dbVisits = visitGateway.findBy(doctorId, day);
-    removeMissingVisits(visits, dbVisits, doctorId);
-    addNewVisits(visits, dbVisits, doctorId);
+    removeMissingWorkingHours(visits, dbVisits, doctorId);
+    addNewWorkingHours(visits, dbVisits, doctorId);
   }
 
   @Override
@@ -51,10 +51,10 @@ public class SaveVisitUsecase implements SaveVisit {
         visit.getVisitDate());
   }
 
-  private void removeMissingVisits(Collection<Visit> visits, Collection<Visit> dbVisits,
+  private void removeMissingWorkingHours(Collection<Visit> visits, Collection<Visit> dbVisits,
       DoctorId doctorId) {
     Collection<Visit> visitsToDelete = dbVisits.stream()
-        .filter(visit -> !containsVisit(visit.getVisitDate(), visits))
+        .filter(visit -> !containsWorkingHour(visit.getVisitDate(), visits))
         .collect(Collectors.toSet());
 
     if (visitsToDelete.size() > 0) {
@@ -73,10 +73,10 @@ public class SaveVisitUsecase implements SaveVisit {
     }
   }
 
-  private void addNewVisits(Collection<Visit> visits, Collection<Visit> dbVisits,
+  private void addNewWorkingHours(Collection<Visit> visits, Collection<Visit> dbVisits,
       DoctorId doctorId) {
     List<Visit> visitsToAdd = visits.stream()
-        .filter(visit -> !containsVisit(visit.getVisitDate(), dbVisits))
+        .filter(visit -> !containsWorkingHour(visit.getVisitDate(), dbVisits))
         .map(visit -> visit.assignDoctor(doctorId))
         .collect(Collectors.toList());
     visitGateway.saveAll(visitsToAdd);
@@ -89,7 +89,7 @@ public class SaveVisitUsecase implements SaveVisit {
     return visits.stream().anyMatch(Visit::isBooked);
   }
 
-  private boolean containsVisit(LocalDateTime visitDate, Collection<Visit> visits) {
+  private boolean containsWorkingHour(LocalDateTime visitDate, Collection<Visit> visits) {
     return visits.stream()
         .anyMatch(visit -> visit.getVisitDate().equals(visitDate));
   }

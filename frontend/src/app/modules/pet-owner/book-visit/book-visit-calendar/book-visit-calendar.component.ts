@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Doctor} from "../../../doctor/model/doctor";
 import _ from "lodash";
 import {VisitBooking} from "../../model/visit-booking";
+import {WorkingHoursService} from "../../../doctor/working-hours/working-hours.service";
 
 @Component({
   selector: 'app-book-visit-calendar',
@@ -16,13 +17,15 @@ export class BookVisitCalendarComponent implements OnInit {
 
   visitBookingMap: Map<number, VisitBooking[]>;
 
-  constructor() {
+  constructor(private workingHoursService: WorkingHoursService) {
   }
 
   ngOnInit() {
-    const doctorsVisits = this.doctors.map(doctor => this.getBookingsWithDoctorName(doctor.visitBookings, doctor.name))
-    .reduce((curr, next) => curr.concat(next), [])
-    this.visitBookingMap = _.groupBy(doctorsVisits, (visit: VisitBooking) => visit.date.getDate());
+    // console.log(new Date(Date.parse("1992-6-12")))
+    // console.log(new Date(Date.parse("YYYY-MM-DDTHH:MM:SS")))
+    // const doctorsVisits = this.doctors.map(doctor => this.getBookingsWithDoctorName(doctor.visitBookings, doctor.name))
+    // .reduce((curr, next) => curr.concat(next), [])
+    // this.visitBookingMap = _.groupBy(doctorsVisits, (visit: VisitBooking) => visit.date.getDate());
   }
 
   getBookingsWithDoctorName(visits: VisitBooking[], doctorName: string) {
