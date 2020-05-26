@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {VisitBooking} from "../../../model/visit-booking";
 import {MatDialog} from "@angular/material/dialog";
 import {VisitReservationModalComponent} from "./visit-reservation-modal/visit-reservation-modal.component";
 import {Router} from "@angular/router";
+import {WorkingHour} from "../../../../doctor/working-hours/working-hours-manager/working-hour";
 
 @Component({
   selector: 'app-visit-calendar-column',
@@ -15,7 +15,7 @@ export class VisitCalendarColumnComponent implements OnInit {
   plusDays: number;
 
   @Input()
-  visitBookings: VisitBooking[];
+  workingHours: WorkingHour[];
 
   constructor(private dialog: MatDialog, private router: Router) {
   }
@@ -23,25 +23,25 @@ export class VisitCalendarColumnComponent implements OnInit {
   ngOnInit() {
   }
 
-  onVisitBookingClicked(visitBooking: VisitBooking) {
+  onVisitBookingClicked(workingHour: WorkingHour) {
     const dialogRef = this.dialog.open(VisitReservationModalComponent, {
       data: {
-        visitBooking: visitBooking,
-        visitHour: this.getHour(visitBooking)
+        visitBooking: workingHour,
+        visitHour: this.getHour(workingHour)
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result.isSubmitted) {
-        this.visitBookings.filter(visitBooking => visitBooking.date === result.visitBooking)[0].isBooked = true;
+        this.workingHours.filter(visitBooking => visitBooking.visitDate === result.visitBooking)[0].isBooked = true;
         this.router.navigate(['pet-owner/visits']);
       }
     });
   }
 
-  getHour(booking: VisitBooking): string {
-    let hour = booking.date.getHours() + ':' + booking.date.getMinutes()
-    if (booking.date.getMinutes() === 0) {
+  getHour(booking: WorkingHour): string {
+    let hour = booking.visitDate.getHours() + ':' + booking.visitDate.getMinutes()
+    if (booking.visitDate.getMinutes() === 0) {
       hour = hour + '0'
     }
     return hour;

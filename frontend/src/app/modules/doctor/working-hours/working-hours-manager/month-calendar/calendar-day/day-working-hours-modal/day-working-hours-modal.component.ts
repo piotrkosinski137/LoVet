@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {WorkingHour} from "../../month-calendar.component";
+import {WorkingHour} from "../../../working-hour";
 
 @Component({
   selector: 'app-day-working-hours-modal',

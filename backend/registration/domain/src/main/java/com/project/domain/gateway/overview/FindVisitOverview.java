@@ -8,5 +8,7 @@ public interface FindVisitOverview {
 
   VisitOverview findBy(UUID id);
 
-  Collection<WorkingHoursOverview> findDoctorVisitDatesBy(String doctorId, LocalDate month);
+  Collection<WorkingHoursOverview> findMonthlyDoctorVisitDates(String doctorId, LocalDate month);
+
+  Collection<WorkingHoursOverview> findWeeklyDoctorVisitDates(String doctorId, LocalDate month);
 }

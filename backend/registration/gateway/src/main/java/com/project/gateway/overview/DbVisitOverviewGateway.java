@@ -25,6 +25,11 @@ public class DbVisitOverviewGateway implements VisitOverviewGateway {
 
   @Override
   public Collection<WorkingHoursOverview> findByDoctorIdAndMonth(String doctorId, LocalDate date) {
-    return repository.findByDoctorAndDate(doctorId, date.getYear(), date.getMonthValue());
+    return repository.findByDoctorAndMonth(doctorId, date.getYear(), date.getMonthValue());
+  }
+
+  @Override
+  public Collection<WorkingHoursOverview> findByDoctorIdAndWeek(String doctorId, LocalDate date) {
+    return repository.findByDoctorAndWeek(doctorId, date.getYear(), date.getMonthValue(), date.getDayOfMonth());
   }
 }

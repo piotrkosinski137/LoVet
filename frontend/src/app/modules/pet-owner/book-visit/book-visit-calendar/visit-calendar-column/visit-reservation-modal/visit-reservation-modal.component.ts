@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {VisitBooking} from "../../../../model/visit-booking";
+import {WorkingHour} from "../../../../../doctor/working-hours/working-hours-manager/working-hour";
 
 @Component({
   selector: 'app-visit-reservation-modal',
@@ -9,18 +9,18 @@ import {VisitBooking} from "../../../../model/visit-booking";
 })
 export class VisitReservationModalComponent implements OnInit {
 
-  visitBooking: VisitBooking;
+  workingHour: WorkingHour;
   visitHour: string;
 
   constructor(@Inject(MAT_DIALOG_DATA) private passedData: any) { }
 
   ngOnInit() {
-    this.visitBooking = this.passedData.visitBooking;
+    this.workingHour = this.passedData.visitBooking;
     this.visitHour = this.passedData.visitHour;
   }
 
   onBookingSubmitted() {
-    return {isSubmitted: true, visitBooking: this.visitBooking.date}
+    return {isSubmitted: true, visitBooking: this.workingHour.visitDate}
   }
 
   onBookingCancelled() {

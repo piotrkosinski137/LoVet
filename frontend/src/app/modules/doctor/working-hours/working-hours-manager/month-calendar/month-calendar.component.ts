@@ -4,6 +4,7 @@ import {Subscription} from "rxjs";
 import {VisitService} from "../../../../../api/visit.service";
 import {MessageService} from "../../../../../api/commons/message.service";
 import {WorkingHourDaySubmitted} from "./calendar-day/calendar-day.component";
+import {WorkingHour} from "../working-hour";
 
 @Component({
   selector: 'app-month-calendar',
@@ -75,18 +76,5 @@ export class MonthCalendarComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
-  }
-}
-
-export class WorkingHour {
-  constructor(private _visitDate: Date, private _isBooked: boolean) {
-  }
-
-  get visitDate(): Date {
-    return this._visitDate;
-  }
-
-  get isBooked(): boolean {
-    return this._isBooked;
   }
 }

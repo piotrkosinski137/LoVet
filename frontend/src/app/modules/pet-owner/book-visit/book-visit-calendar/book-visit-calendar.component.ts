@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Doctor} from "../../../doctor/model/doctor";
-import _ from "lodash";
-import {VisitBooking} from "../../model/visit-booking";
 import {WorkingHoursService} from "../../../doctor/working-hours/working-hours.service";
+import {WorkingHour} from "../../../doctor/working-hours/working-hours-manager/working-hour";
+import {reduce} from "rxjs/operators";
 
 @Component({
   selector: 'app-book-visit-calendar',
@@ -15,7 +15,7 @@ export class BookVisitCalendarComponent implements OnInit {
   doctors: Doctor[];
   sevenDaysArray = Array(7).map((x, i) => i);
 
-  visitBookingMap: Map<number, VisitBooking[]>;
+  visitBookingMap: Map<number, WorkingHour[]>;
 
   constructor(private workingHoursService: WorkingHoursService) {
   }
@@ -23,16 +23,23 @@ export class BookVisitCalendarComponent implements OnInit {
   ngOnInit() {
     // console.log(new Date(Date.parse("1992-6-12")))
     // console.log(new Date(Date.parse("YYYY-MM-DDTHH:MM:SS")))
-    // const doctorsVisits = this.doctors.map(doctor => this.getBookingsWithDoctorName(doctor.visitBookings, doctor.name))
-    // .reduce((curr, next) => curr.concat(next), [])
-    // this.visitBookingMap = _.groupBy(doctorsVisits, (visit: VisitBooking) => visit.date.getDate());
+    this.doctors.forEach(doctor => this.getBookingsBy(doctor.id))
   }
 
-  getBookingsWithDoctorName(visits: VisitBooking[], doctorName: string) {
-    return visits.map(visit => new VisitBooking(visit.date, visit.isBooked, doctorName))
+  getBookingsBy(doctorId: string) {
+    return this.workingHoursService.getDoctorWorkingHoursByWeek(new Date(), doctorId)
+    .pipe(reduce((curr, next) => curr.concat(next), []))
+    .subscribe((workingHours: WorkingHour[]) => {
+      this.visitBookingMap = (workingHours.reduce((r, a) => {
+        r[a.visitDate.getDate()] = [...r[a.visitDate.getDate()] || [], a];
+        return r;
+      }, {}) as Map<number, WorkingHour[]>);
+    })
   }
 
-  getVisitBookings(daysToAdd: number): VisitBooking[] {
-    return this.visitBookingMap[new Date().getDate() + daysToAdd]
+  getWorkingHours(daysToAdd: number): WorkingHour[] {
+    if(this.visitBookingMap && this.visitBookingMap[new Date().getDate() + daysToAdd]) {
+      return (this.visitBookingMap[new Date().getDate() + daysToAdd] as WorkingHour[])
+    }
   }
 }

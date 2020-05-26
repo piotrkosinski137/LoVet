@@ -32,7 +32,7 @@ public class SaveVisitController {
   @PostMapping("/doctor/new")
   public void saveWorkingHoursDay(@RequestBody SaveBlankVisitsDto dto, Principal principal) {
     saveVisit.saveWorkingHoursDay(visitMapper.toVisits(dto),
-        DoctorId.create(principal.getName()), localDateMapper.mapFromLocalDateTimeString(dto.getDay()));
+        DoctorId.create(principal.getName()), localDateMapper.mapFrom(dto.getDay()));
   }
 
   @PostMapping("/book")

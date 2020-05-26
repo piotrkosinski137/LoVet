@@ -28,7 +28,12 @@ public class FindVisitOverviewUsecase implements FindVisitOverview {
   }
 
   @Override
-  public Collection<WorkingHoursOverview> findDoctorVisitDatesBy(String doctorId, LocalDate month) {
+  public Collection<WorkingHoursOverview> findMonthlyDoctorVisitDates(String doctorId, LocalDate month) {
     return visitOverviewGateway.findByDoctorIdAndMonth(doctorId, month);
+  }
+
+  @Override
+  public Collection<WorkingHoursOverview> findWeeklyDoctorVisitDates(String doctorId, LocalDate month) {
+    return visitOverviewGateway.findByDoctorIdAndWeek(doctorId, month);
   }
 }
